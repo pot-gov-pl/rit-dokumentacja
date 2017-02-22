@@ -1,11 +1,6 @@
 # Użytkowanie interfejsów WSDL
 
-Wersja 7.1
-
-Polska Organizacja Turystyczna
-Betacom S.A.
-
-Dokument Projektowy
+Wersja 7.1, Polska Organizacja Turystyczna, Betacom S.A.
 
 ## Historia zmian
 
