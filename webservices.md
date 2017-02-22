@@ -427,7 +427,7 @@ identifierRIT	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacj
 identifierSZ	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacji przekazania danych do RIT, są to skopiowane dane identyfikacyjne, podane przy wywołaniu operacji z GiveTouristObjects.wsdl.<br><br>W operacji przekazania do Systemu RIT element ten nie może współistnieć z elementem: identifierRIT i positionInXML.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	|	GIVE	|	element	|	0..1
 positionInXML	|	Element opisuje pozycję danego obiektu w przekazanym XML, jeśli nie udało się zidentyfikować obiektu za pomocą elementów:  identifierSZ i  identifierRIT.	|	GIVE	|	string	|	0..1
 objectState	|	Status obiektu po przetworzeniu:<br>- OK – obiekt turystyczny bez błędów zapisany w bazie Systemu RIT<br>- WARNING – obiekt turystyczny z ostrzeżeniami, zapisany w bazie Systemu RIT<br>- ERROR – obiekt turystyczny z błędami, nie zapisany w bazie Systemu RIT	|	GIVE	|	string	|	1..1
-reportLine	|	Jedna linijka raportu ( zazwyczaj jeden wyodrębniony błąd / komunikat ). 	GIVE	element	0..unbounded
+reportLine	|	Jedna linijka raportu ( zazwyczaj jeden wyodrębniony błąd / komunikat ).	| GIVE	|	element	|	0..unbounded
 reportLine->lineType	|	Typ linijki raportu:<br>- WARNING – ostrzeżenie o nieprawidłowości, nieblokujące zapisu do bazy danych Systemu RIT<br>- ERROR – błąd blokujący zapis do bazy danych Systemu RIT	|	GIVE	|	string	|	1..1
 reportLine->textLine	|	Treść linijki raportu.	|	GIVE	|	string	|	1..1
 
