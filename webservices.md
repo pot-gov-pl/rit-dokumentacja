@@ -26,7 +26,7 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 -	mechanizmów wymiany danych z systemami zewnętrznymi – zwanych zespołem interfejsów wymiany danych,
 - aplikacji zarządzającej bazą danych oraz zarządzającej mechanizmami wymiany danych – zwanej Aplikacją RIT,
 
-**System zewnętrzny** – dowolna baza danych oraz oprogramowanie, przechowujący i przetwarzający dane o obiektach turystycznych. 
+**System zewnętrzny** – dowolna baza danych oraz oprogramowanie, przechowujący i przetwarzający dane o obiektach turystycznych.
 
 **Przekazanie danych, przekazanie** – System zewnętrzny przekazuje dane do Systemu RIT. Stroną inicjującą połączenie może być System zewnętrzny lub System RIT. Przekazanie danych, to kierunek przepływu danych pomiędzy systemami, gdzie System zewnętrzny dostarcza danych, a System RIT, przetwarza je w celu umieszczenia ich, w swojej bazie danych.
 
@@ -47,9 +47,9 @@ Na potrzeby integracji zostały przygotowane interfejsy WSDL:
 -	GetTouristObjectLanguages.wsdl – pobranie danych o wersjach językowych obiektu z Systemu RIT,
 -	oraz serwis HTTP do udostępniania plików graficznych.
 
-Implementacja interfejsów została wykonana z wykorzystaniem standardu **JAX-WS**. 
+Implementacja interfejsów została wykonana z wykorzystaniem standardu **JAX-WS**.
 
-Implementacja JAX-WS to **Apache CXF w wersji 2.5.1**. 
+Implementacja JAX-WS to **Apache CXF w wersji 2.5.1**.
 
 Serwer web, udostępniający RIT webservices, to: **Apache HTTP Server 2.2.23**.
 
@@ -64,7 +64,7 @@ Webservices są dostępne pod adresami ( odpowiednio ):
 -	https://intrit.poland.travel/rit/integration/MetadataOfRIT?wsdl
 -	https://intrit.poland.travel/rit/integration/CollectTouristObjects?wsdl
 -	https://intrit.poland.travel/rit/integration/CollectTouristObjectsCache?wsdl
--	https://intrit.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl 
+-	https://intrit.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl
 -	https://intrit.poland.travel/rit/integration/GetTouristObjectEvents?wsdl
 
 Serwis do udostępniania plików binarnych:
@@ -75,7 +75,7 @@ Serwis do udostępniania plików binarnych:
 -	https://intrittest.poland.travel/rit/integration/MetadataOfRIT?wsdl
 -	https://intrittest.poland.travel/rit/integration/CollectTouristObjects?wsdl
 -	https://intrittest.poland.travel/rit/integration/CollectTouristObjectsCache?wsdl
--	https://intrittest.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl 
+-	https://intrittest.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl
 -	https://intrittest.poland.travel/rit/integration/GetTouristObjectEvents?wsdl
 -	https://intrittest.poland.travel/rit/integration/getfile?fileid=????
 
@@ -114,7 +114,7 @@ requestDate	|	Data i czas systemowy na maszynie z której jest uruchamiany webse
 
 ### Obiekt turystyczny
 
-Element 'touristObject' opisuje obiekt turystyczny. Jest wykorzystywany do przekazywania/pobierania danych do/z Systemu RIT. W zależności od kierunku przepływu danych, niektóre elementy są pomijane lub dodatkowo wykorzystywane do opisu obiektu turystycznego. 
+Element 'touristObject' opisuje obiekt turystyczny. Jest wykorzystywany do przekazywania/pobierania danych do/z Systemu RIT. W zależności od kierunku przepływu danych, niektóre elementy są pomijane lub dodatkowo wykorzystywane do opisu obiektu turystycznego.
 
 Opis jednego obiektu turystycznego składa się z głównych elementów:
 
@@ -207,7 +207,7 @@ Element: **attributes**
 Przykład:
 ```xml
 <attributes>
-   <attribute code=”">
+   <attribute code="">
       <attrVals language="">
          <value><value>
       <attrVals>
@@ -325,7 +325,7 @@ Przykład:
 	  <certificate>
    <documentURL>
 ```
-   
+
 Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
@@ -351,7 +351,7 @@ Przykład:
 	  <certificate>
    <documentFile>
 ```
-   
+
 Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
@@ -377,7 +377,7 @@ Przykład:
 	  <certificate>
    <documentBase64>
 ```
-   
+
 Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
@@ -390,6 +390,47 @@ certificate ->validTo	Data	| do  pozwolenia na użytkowanie pliku.	|	COLLECT	|	d
 certificate ->distributionChannelOwner	|	Źródłowy kanał dystrybucji z którego pozyskano plik.	| 	COLLECT	|	string	|	1..1
 
 ### Raport z wykonania
+
+Element 'report' zawiera w sobie tylko elementy ' reportForObject' który zawierają raport/informację o statusie i błędach jakie stwierdzono w czasie przetwarzania obiektu.
+
+Przykład:
+```xml
+<report>
+	<reportForObject>
+	   <identifierRIT>
+		  <identifierRIT><identifierRIT>
+		  <lastModified>2014-09-19<lastModified>
+	   <identifierRIT>
+	   <identifierSZ>
+		  <identifierType><identifierType>
+		  <artificialIdentifier><artificialIdentifier>
+		  <databaseTable><databaseTable>
+		  <concatenationOfField><concatenationOfField>
+	   <identifierSZ>
+          <positionInXML></positionInXML>
+	   <objectState><objectState>
+	   <reportLine>
+		  <lineType><lineType>
+		  <textLine><textLine>
+	   <reportLine>
+	<reportForObject>
+<report>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
+---	| ---	| ---	| ---	| ---
+report	|	Element grupujący elementy 'reportForObject'.	|	GIVE	|	element	| 1..1
+reportForObject	|	Element zawierający raport tylko dla jednego obiektu turystycznego.	|	GIVE	|	element	|	1..unbounded
+identifierRIT	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacji przekazania danych do RIT, są to skopiowane dane identyfikacyjne, podane przy wywołaniu operacji z GiveTouristObjects.wsdl.<br><br>W operacji przekazania do Systemu RIT element ten nie może współistnieć z elementem: identifierSZ i positionInXML.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT.	|	GIVE	|	element	|	0..1
+identifierSZ	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacji przekazania danych do RIT, są to skopiowane dane identyfikacyjne, podane przy wywołaniu operacji z GiveTouristObjects.wsdl.<br><br>W operacji przekazania do Systemu RIT element ten nie może współistnieć z elementem: identifierRIT i positionInXML.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	|	GIVE	|	element	|	0..1
+positionInXML	|	Element opisuje pozycję danego obiektu w przekazanym XML, jeśli nie udało się zidentyfikować obiektu za pomocą elementów:  identifierSZ i  identifierRIT.	|	GIVE	|	string	|	0..1
+objectState	|	Status obiektu po przetworzeniu:<br>- OK – obiekt turystyczny bez błędów zapisany w bazie Systemu RIT<br>- WARNING – obiekt turystyczny z ostrzeżeniami, zapisany w bazie Systemu RIT<br>- ERROR – obiekt turystyczny z błędami, nie zapisany w bazie Systemu RIT	|	GIVE	|	string	|	1..1
+reportLine	|	Jedna linijka raportu ( zazwyczaj jeden wyodrębniony błąd / komunikat ). 	GIVE	element	0..unbounded
+reportLine->lineType	|	Typ linijki raportu:<br>- WARNING – ostrzeżenie o nieprawidłowości, nieblokujące zapisu do bazy danych Systemu RIT<br>- ERROR – błąd blokujący zapis do bazy danych Systemu RIT	|	GIVE	|	string	|	1..1
+reportLine->textLine	|	Treść linijki raportu.	|	GIVE	|	string	|	1..1
+
 
 ## 4.	Operacje w CollectTouristObjects
 
@@ -425,10 +466,187 @@ certificate ->distributionChannelOwner	|	Źródłowy kanał dystrybucji z które
 
 ## 10.	Atrybuty, kategorie i języki narodowe w RIT
 
+Niniejszy rozdział zawiera dodatkowe informacje o sposobie przetwarzania żądań w Systemie RIT.
+
+W niniejszym rozdziale, słowo  'dokument' oznacza dokument 'Struktura danych RIT v.X.xlsx' zawierającego opis bazy merytorycznej systemu RIT (gdzie X oznacza numer wersji dokumentu).
+
+W Systemie RIT, opis obiektu turystycznego jest złożony z:
+1.	listy kategorii do której przypisany jest obiekt turystycznych
+2.	listy atrybutów które posiada obiekt turystycznych
+3.	wersji językowej w której przygotowany został opis obiektu
+4.	innych pomocniczych atrybutów, utworzonych na potrzeby systemu RIT, do organizacji przetwarzania obiektu turystycznego.
+
 ### Ad 1) Kategorie
+
+Każdy obiekt w systemie RIT, jest przypisany do co najmniej jednej kategorii. Każda kategoria składa się z listy atrybutów które stanowią opis tej kategorii. Lista atrybutów opisujących obiekt, jest uwarunkowana kategorią/-ami do której należy dany obiekt turystyczny.
+
+Kategorie w systemie RIT, mają strukturę hierarchiczną. Na górze struktury znajduje się kategoria ROOT, z której niższe kategorie dziedziczą atrybuty. Hierarchia kategorii może ulegać zmianie,  gdyż jest dostępna do edycji dla użytkownika systemu RIT. Bieżąca struktura kategorii nie jest udostępniana przez webservice MetaDataOfRIT, gdyż do opisu obiektu turystycznego w RIT, hierarchia kategorii nie ma istotnego znaczenia.
+
+Aktualny opis hierarchii jest zawarty w dokumencie, zakładka: Kategorie.
+
+W czasie przekazywania danych do systemu RIT, każdy obiekt turystyczny musi mieć przydzieloną kategorię. Dobierać należy kategorie z poziomu 3 lub poziomu 4 ( patrz dokument ). Kategorie z poziomów 2,1,0 zostaną automatycznie przypisane do obiektu i nie ma potrzeby ich podawania w elemencie 'touristObjects/categories'.
+
+W czasie przekazywania danych do systemu RIT, mogą się zdarzyć następujące przypadki:
+-	kategoria obiektu turystycznego w systemie źródłowym nie istnieje lub nie ma odpowiednika w systemie RIT – w takiej sytuacji należy wybrać najbardziej zbliżoną kategorię spośród istniejących w systemie RIT.
+-	kategoria obiektu turystycznego, w systemie źródłowym istnieje lecz ilość atrybutów opisujących obiekt w systemie źródłowym i docelowym jest nierówna – należy przekazać wszystkie atrybuty obiektu turystycznego zgromadzone w systemie źródłowym
+
+W czasie pobierania danych do systemu RIT, dla każdego obiektu turystycznego zostaną zwrócone wszystkie kategorie do których przypisany jest obiekt ( niezależnie od poziomu z którego pochodzi kategoria).  
+
+Przykład:
+
+```xml
+         <ritCategory>
+            <code>C001</code>
+            <name>Root</name>
+            <description>Root</description>
+            <attributeCodes>
+               <attributeCode>A001</attributeCode>
+               <attributeCode>A002</attributeCode>
+            </attributeCodes>
+         </ritCategory>
+         <ritCategory>
+            <code>C002</code>
+            <name>Obiekty POI</name>
+            <description>Obiekty POI</description>
+            <attributeCodes>
+               <attributeCode>A008</attributeCode>
+               <attributeCode>A134</attributeCode>
+            </attributeCodes>
+         </ritCategory>
+```
 
 ### Ad 2) Atrybuty
 
+Każdy obiekt w systemie RIT,  posiada jeden lub więcej atrybutów. Lista atrybutów opisujących obiekt, wynika z kategorii do których przypisany jest dany obiekt.
+
+W czasie przekazywania lub pobierania danych do/z systemu RIT, wartości wszystkich atrybutów powinny być przekazane/będą udostępniane jako ciąg znaków. Weryfikacja zgodności danej wartości z typem danych, opisujących danych atrybut, będzie wykonana na etapie weryfikacji poprawności obiektu ( patrz podrozdział: Etapy przetwarzania obiektów ).
+
+Aktualny opis atrybutów jest zawarty w dokumencie, zakładka: Atrybuty.
+
+Przypisanie atrybutów do kategorii, jest zawarte w dokumencie, zakładka: Atrybuty kategorii.
+
+Ze względu na typ wartości, atrybuty w systemie RIT, dzielą się na:
+-	typy prymitywne ( SHORT_TEXT, LONG_TEXT, NUMBER, BOOLEAN, DATE )
+-	typ COMPLEX – jest to atrybut złożony, który sam nie przechowuje wartości atrybutu, a tylko grupuje inne atrybuty
+-	typy MULTIPLY_LIST, SINGLE_LIST – jest to atrybut, którego wartościami mogą być tylko pozycje z słownika przypisanego do tego atrybutu.
+
+Podczas przekazywania danych do systemu RIT, należy zapewnić:
+-	dla typów prymitywnych - zgodność wartości z typem
+-	dla typu COMPLEX – użycie odpowiedniego zestawu atrybutów zgrupowanych w ramach tego typu złożonego. Uwaga: używanie atrybutów typu COMPLEX, nie jest obowiązkowe.
+-	dla typu MULTIPLY_LIST, SINGLE_LIST  – użycie pozycji istniejącej w słowniku przypisanym do danego atrybutu. W przypadku gdy istniejąca pozycja nie istnieje w słowniku systemu RIT, to również należy ją przekazać. W przypadku atrybutów: województwo, powiat, gmina, miejscowość należy przekazać nazwę np. Mazowieckie, Warszawa itp. Dopuszcza się żeby zamiast nazwy podawać ID województwa, ID powiatu, ID gminy, ID miejscowości (patrz opis elementu AttrVals).
+
+W czasie przekazywania danych do systemu RIT, mogą się zdarzyć następujące przypadki:
+-	atrybut obiektu turystycznego, w systemie źródłowym, nie istnieje w systemie RIT – w takiej sytuacji należy pominąć przekazywanie takiego atrybutu,
+-	atrybut obiektu turystycznego, w systemie źródłowym istnieje lecz typ atrybutu jest niezgodny z tym w systemie RIT  – jeśli jest możliwość wykonania konwersji typów to należy ją wykonać. Gdy nie ma takiej możliwości atrybut należy pominąć,
+-	kategoria w systemie RIT, do której przypisano obiekt nie zawiera w sobie, atrybutów posiadanych przez obiekt w systemie źródłowym – należy przekazać taki atrybut do systemu RIT.
+
+W czasie pobierania danych z systemu RIT, udostępniane są wszystkie atrybuty przypisane do obiektu turystycznego:
+-	dla typów prymitywnych - zgodne z typem
+-	dla typu COMPLEX – aktualnie nie używane.
+-	dla typu MULTIPLY_LIST, SINGLE_LIST  – wartość pozycji z słownika w systemie RIT.
+
+Przykład definicji atrybutu:
+
+```xml
+<ritAttribute>
+	<code>A017</code>
+	<name>Kod pocztowy</name>
+	<description>Kod pocztowy</description>
+	<typeValidator>SHORT_TEXT</typeValidator>
+	<typeUI>NULL</typeUI>
+	<valRegexExpr>^[0-9]{2}\-[0-9]{3}$</valRegexExpr>
+	<maxLegth>250</maxLegth>
+ </ritAttribute>
+ <ritAttribute>
+	<code>A002</code>
+	<name>Opis</name>
+	<description>Opis obiektu</description>
+	<typeValidator>COMPLEX</typeValidator>
+	<typeUI>NULL</typeUI>
+	<maxLegth>null</maxLegth>
+	<complexAttribute>
+	   <attributeCode>A003</attributeCode>
+	   <attributeCode>A004</attributeCode>
+	</complexAttribute>
+ </ritAttribute>
+```
+
+
 ### Ad 3) Wersja językowa
 
+Każdy obiekt w systemie RIT,  posiada jedną lub więcej wersji językowych.  Wersja językowa to zestaw wartości atrybutów, które są zapisane w jednym z języków narodowych. Każda z wersji językowych jest przetwarzana oddzielnie w systemie RIT.  Wpływa to na sposób wymiany danych z systemem RIT.
+
+Podczas przekazywania danych do systemu RIT, dla każdego z atrybutów należy podać, w jakiej wersji językowej jest wartość danego atrybutu:
+-	locale dla języka narodowego ( 'pl-PL', 'en-GB' itp. ) - wartość atrybutu jest zapisana dla danego języka narodowego. Wartość tego atrybutu, zostanie umieszczona tylko w wskazanej wersji językowej. Należy używać locale dla wszystkich atrybutów które mogą podlegać tłumaczeniom
+-	'all'- wartość atrybutu zostanie umieszczona we wszystkich wersjach językowych, dla danego obiektu turystycznego.
+
+Podczas przekazywania danych do systemu RIT, wersje językowe są tworzone na bazie przekazywanych atrybutów. Z każdego z atrybutów jest pobierana informacja o wersji językowej i na tej podstawie tworzona jest lista wersji językowych.  Atrybuty nie mają w swojej konfiguracji wytycznych co do wersji językowej w jakiej mogą być używane. Jednak można zastosować pewne reguły:
+-	atrybuty posiadające wartości będące nazwami własnymi  ( miasto, miejscowość itp. ) –  powinny być przekazywane dla każdej wersji językowej ( 'all' )
+-	atrybuty posiadające wartości będące liczbami, datami lub nie zawierające słów – powinny być przekazywane dla każdej wersji językowej ( 'all' )
+-	atrybuty posiadające wartości z słownika – powinny być przekazywane dla konkretnego języka  narodowego  ( 'pl-PL', 'en-GB' itp. ). Uwaga: jeśli słownik posiada nazwy własne, w języku polskim, które nie podlegają tłumaczeniu, to można użyć dla niego każdej wersji językowej ( 'all' ).
+-	pozostałe atrybuty powinny być przekazywane dla konkretnego języka  narodowego  ( 'pl-PL', 'en-GB' itp. )
+
+Podczas pobierania danych z systemu RIT, należy podać konkretną wersję językową, w której dane mają być dostarczone. Nie jest dopuszczalne użycie każdej wersji językowej ( 'all' ).
+
+
 ### Ad 4) Dane adresowe obiektu
+
+Podawanie danych adresowych obiektu możliwe jest na dwa sposoby:
+
+1.	Bezpośrednie podanie czystym tekstem nazwy województwa, powiatu, gminy i miejscowości;
+2.	Tak jak dla wszystkich danych słownikowych: Podawanie numeru ID pozycji słownika województw, powiatów, gmin lub miejscowości (wymaga to znajomości numerów ID).
+
+W pierwszym przypadku mogą wystąpić dwie sytuacje powodujące błędy lub uniemożliwiające poprawne przetwarzanie danych:
+
+-	Nazwa województwa, powiatu, gminy lub miejscowości będzie błędna (lub jeszcze nieznana, nieobecna w bazie) – wówczas obiekt zostanie przyjęty do bazy RIT i użytkownik o odpowiedniej wiedzy merytorycznej poprawi błąd ręcznie lub odrzuci obiekt
+-	Nazwa województwa, powiatu, gminy lub miejscowości będzie niejednoznaczna – system RIT postara się na podstawie wszystkich danych (województwa, powiatu, gminy, miejscowości) określić prawidłową, niejednoznaczną lokalizację obiektu, ewentualnie obiekt zostanie przyjęty lecz skierowany do poprawki przez żywą osobę
+
+System jest niewrażliwy na wielkość liter w przypadku tych atrybutów.
+
+Adresowanie czystym tekstem
+```xml
+<attribute code="A009">
+	<attrVals language="all">
+		<value>śląskie</value>
+	</attrVals>
+</attribute>
+<attribute code="A010">
+	<attrVals language="all">
+		<value>tychy</value>
+	</attrVals>
+</attribute>
+<attribute code="A011">
+	<attrVals language="all">
+		<value>Tychy</value>
+	</attrVals>
+</attribute>
+<attribute code="A012">
+	<attrVals language="all">
+		<value>Tychy</value>
+	</attrVals>
+</attribute>
+```
+
+Adresowanie numerami ID
+```xml
+<attribute code="A009">
+	<attrVals language="all">
+		<value>1919</value>
+	</attrVals>
+</attribute>
+<attribute code="A010">
+	<attrVals language="all">
+		<value>1587</value>
+	</attrVals>
+</attribute>
+<attribute code="A011">
+	<attrVals language="all">
+		<value>4729</value>
+	</attrVals>
+</attribute>
+<attribute code="A012">
+	<attrVals language="all">
+		<value>96392</value>
+	</attrVals>
+</attribute>
+```
