@@ -474,12 +474,10 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 language	|	Język w którym zostaną udostępnione wartości wszystkich atrybutów, opisujących obiekt turystyczny.	|	string	|	1..1
-allForDistributionChannel	|	Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|
-	boolean	|	0..1
+allForDistributionChannel	|	Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|	boolean	|	0..1
 searchAttributeAnd	|	Element pozwala na podanie wartości dowolnego atrybutu po którym odbywać się ma wyszukiwanie obiektów. Wyszukane zostaną wszystkie obiekty. Które posiadają danych atrybut o określonej wartości. Elementy  allForDistributionChannel,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelce: searchAttributeAnd.	|	element	|	0..1
 searchCategoryAnd	|	Element pozwala na podanie kodu dowolnej kategorii Systemu RIT. Wyszukane zostaną wszystkie obiekty należące do tych kategorii.
-Elementy  allForDistributionChannel,  searchAttributeAnd, objectIdentifier,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|
-	element	|	0..1
+Elementy  allForDistributionChannel,  searchAttributeAnd, objectIdentifier,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|	element	|	0..1
 objectIdentifier	|	Element pozwala na podanie identyfikatorów RIT lub identyfikatorów z systemu zewnętrznego po których ma być przeszukiwana baza Systemu RIT.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelkach: touristObjectIdentifierRIT, touristObjectIdentifierSZ.	|	element	|	0..1
 lastModifiedRange	|	Element pozwala na podanie zakresu dat  lub jednego z krańców zakresu dat, odnoszących się do daty ostatniej modyfikacji obiektu turystycznego w Systemie RIT. Zwracane są wszystkie obiekty dostępne dla kanału dystrybucji w podanym zakresie dat.<br><br>Jedna z dat: dateFrom,  dateTo musi być zawsze podana.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd, objectIdentifier nie będą brane pod uwagę w kryteriach wyszukiwania.	|	element	|	0..1
 lastModifiedRange->dateFrom	|	Dolny kraniec ograniczenia w zakresie dat.	|	date	|	0..1
@@ -554,8 +552,8 @@ Element GetTouristObjectEventsRequest w żądaniu ( request ) ma następującą 
 
 Opis elementów:
 
-Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
----	| ---	| ---	| ---	| ---
+Element |	Przeznaczenie |		Typ XML |	Krotność
+---	| ---	| ---	| ---
 metric		|Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.		|string		|1..1
 dataFrom		|Data początkowa  zdarzeń.		|date		|1..1
 dataTo		|Data końcowa zdarzeń.		|date		|1..1
@@ -582,8 +580,8 @@ Element GetTouristObjectEventsResponse w odpowiedzi ( response ) ma następując
 
 Opis elementów:
 
-Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
----	| ---	| ---	| ---	| ---
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
 eventType	|	Typ zdarzenia. Wartości: TO_ARCHIVE, MERGE.	|	string		|1..1
 eventDate	|	Data i czas zdarzenia.	|	dateTime		|1..1
 objectId	|	Id obiektu, którego dotyczy zdarzenie.	|	string	|	1..1
