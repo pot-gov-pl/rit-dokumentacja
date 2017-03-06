@@ -436,6 +436,76 @@ reportLine->textLine	|	Treść linijki raportu.	|	GIVE	|	string	|	1..1
 
 ### Operacja searchTouristObjects
 
+Element 'searchCondition' zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
+
+Element searchCondition w żądaniu (request) ma następującą postać:
+
+```xml
+ <searchCondition>
+	<language></language>
+	<allForDistributionChannel></allForDistributionChannel>
+	<searchAttributeAnd>
+	   <attributeValue>
+		  <attributeCode></attributeCode>
+		  <valueToSearch></valueToSearch>
+	   </attributeValue>
+	</searchAttributeAnd>
+	<searchCategoryAnd>
+	   <categoryCode></categoryCode>
+	</searchCategoryAnd>
+	<objectIdentifier>
+	   <identifierRIT></identifierRIT>
+	   <identifierSZ>
+		  <identifierType></identifierType>
+		  <artificialIdentifier>1</artificialIdentifier>
+		  <databaseTable>obiekt</databaseTable>
+		  <concatenationOfField></concatenationOfField>
+	   </identifierSZ>
+	</objectIdentifier>
+	<lastModifiedRange>
+	   <dateFrom></dateFrom>
+	   <dateTo></dateTo>
+	</lastModifiedRange>
+</searchCondition>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
+---	| ---	| ---	| ---	| ---
+language	|	Język w którym zostaną udostępnione wartości wszystkich atrybutów, opisujących obiekt turystyczny.	|	string	|	1..1
+allForDistributionChannel	|	Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|
+	boolean	|	0..1
+searchAttributeAnd	|	Element pozwala na podanie wartości dowolnego atrybutu po którym odbywać się ma wyszukiwanie obiektów. Wyszukane zostaną wszystkie obiekty. Które posiadają danych atrybut o określonej wartości. Elementy  allForDistributionChannel,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelce: searchAttributeAnd.	|	element	|	0..1
+searchCategoryAnd	|	Element pozwala na podanie kodu dowolnej kategorii Systemu RIT. Wyszukane zostaną wszystkie obiekty należące do tych kategorii.
+Elementy  allForDistributionChannel,  searchAttributeAnd, objectIdentifier,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|
+	element	|	0..1
+objectIdentifier	|	Element pozwala na podanie identyfikatorów RIT lub identyfikatorów z systemu zewnętrznego po których ma być przeszukiwana baza Systemu RIT.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelkach: touristObjectIdentifierRIT, touristObjectIdentifierSZ.	|	element	|	0..1
+lastModifiedRange	|	Element pozwala na podanie zakresu dat  lub jednego z krańców zakresu dat, odnoszących się do daty ostatniej modyfikacji obiektu turystycznego w Systemie RIT. Zwracane są wszystkie obiekty dostępne dla kanału dystrybucji w podanym zakresie dat.<br><br>Jedna z dat: dateFrom,  dateTo musi być zawsze podana.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd, objectIdentifier nie będą brane pod uwagę w kryteriach wyszukiwania.	|	element	|	0..1
+lastModifiedRange->dateFrom	|	Dolny kraniec ograniczenia w zakresie dat.	|	date	|	0..1
+lastModifiedRange->dateTo	|	Górny kraniec ograniczenia w zakresie dat.	|	date	|	0..1
+
+
+Element 'CollectTouristObjectResponse' w odpowiedzi (response) ma następującą postać:
+
+```xml
+   <CollectTouristObjectResponse>
+         <status></status>
+         <info></info>
+         <touristObject>
+         …....
+         <touristObject>
+   <CollectTouristObjectResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
+---	| ---	| ---	| ---	| ---
+status	|	Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	|	0..1
+info	|	Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.		| string	|	0..1
+touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	|	|
+
 ## 5.	Operacje w CollectTouristObjectsCache
 
 ### Operacja searchTouristObjectsInCache
@@ -463,6 +533,62 @@ reportLine->textLine	|	Treść linijki raportu.	|	GIVE	|	string	|	1..1
 ## 9.	Operacje w GetTouristObjectEvents
 
 ### Operacja getEvents
+
+Operacja pozwala na pobranie zdarzeń dotyczących obiektów w danym okresie. Obsługiwane zdarzenia:
+-	TO_ARCHIVE – przeniesienie do archiwum
+-	MERGE – scalenie obiektów
+
+Element GetTouristObjectEventsRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+ <GetTouristObjectEventsRequest>
+	<metric>
+…
+	</metric>
+	<criteria>
+		<dateFrom></dateFrom>
+		<dateTo></dateTo>
+	</criteria>
+</GetTouristObjectEventsRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
+---	| ---	| ---	| ---	| ---
+metric		|Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.		|string		|1..1
+dataFrom		|Data początkowa  zdarzeń.		|date		|1..1
+dataTo		|Data końcowa zdarzeń.		|date		|1..1
+
+
+Element GetTouristObjectEventsResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<GetTouristObjectEventsResponse>
+	<events>
+		<eventType>TO_ARCHIVE</eventType>
+		<eventDate>2016-08-02T09:00:26.000+02:00</eventDate>
+		<objectId>74866</objectId>
+	</events>
+…
+	<events>
+		<eventType>MERGE</eventType>
+		<eventDate>2016-09-09T09:11:45.000+02:00</eventDate>
+		<objectId>75736</objectId>
+		<newObjectId>85343</newObjectId>
+	</events>
+</GetTouristObjectEventsResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
+---	| ---	| ---	| ---	| ---
+eventType	|	Typ zdarzenia. Wartości: TO_ARCHIVE, MERGE.	|	string		|1..1
+eventDate	|	Data i czas zdarzenia.	|	dateTime		|1..1
+objectId	|	Id obiektu, którego dotyczy zdarzenie.	|	string	|	1..1
+newObejctId		|Id obiektu po scaleniu obiektu. Występuje tylko dla zdarzenia MERGE.	|	string		|0..1
+
 
 ## 10.	Atrybuty, kategorie i języki narodowe w RIT
 
