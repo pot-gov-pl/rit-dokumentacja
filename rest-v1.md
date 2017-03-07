@@ -163,7 +163,7 @@ Wywołanie | Metoda | Opis
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
-attachment_id	 | T	 | Id pliku. Zwykle jest brany z atrybutu attachments z wyniku pobrania obiektu (patrz Pobierz obiekt turystyczny).<br>/api/attachments/11209
+file_id	 | T	 | Id pliku. Zwykle jest brany z atrybutu attachments z wyniku pobrania obiektu (patrz Pobierz obiekt turystyczny).<br>/api/attachments/11209
 
 Wynik - w nagłówku response ustawiane jest:
 ```
