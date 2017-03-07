@@ -51,11 +51,101 @@ Nazwa	| Opis
 
 ## 3.	Pobranie listy województw
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/regions.jsonp | GET | Pobiera listę województw.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+(Brak) | |
+
+Wynik:
+
+```json
+{"data":[
+{"id":1912,"name":"DOLNOŚLĄSKIE"},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id |	Id województwa
+name |	Nazwa
+
 ## 4.	Pobranie listy miejscowości
+
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/cities.jsonp | GET | Pobiera listę miejscowości.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+start | 	N | 	Początkowe litery miejscowości. Wielkość liter nie ma znaczenia. Z powodów wydajnościowych najlepiej przyjąć minimum 3 pierwsze litery.<br>/api/cities.jsonp?start=lub
+regionId	 | N	 | Id województwa. Z powodów wydajnościowych najlepiej używać w połączeniu z parametrem start.<br>/api/cities.jsonp?start=war&regionId=1918
+
+Wynik:
+
+```json
+{"data":[
+{"id":35707,"name":"Warchoły, gm. Miedzna, pow. węgrowski, woj. MAZOWIECKIE","regionId":1918},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id	 | Id miejscowości
+name	 | Nazwa (zawiera gminę, powiat i województwo)
+regionId | 	Id województwa.
 
 ## 5.	Pobranie listy powiatów
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/districts.jsonp | GET | Pobiera listę powiatów.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+start	 | N	 | Początkowe litery powiatu. Wielkość liter nie ma znaczenia. Z powodów wydajnościowych najlepiej przyjąć minimum 3 pierwsze litery.<br>/api/districts.jsonp?start=lub
+
+Wynik:
+
+```json
+{"data":[
+{"id":1596,"name":"lubaczowski"},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id |	Id powiatu
+name |	Nazwa
+
 ## 6.	Pobranie listy gmin
+
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/communitis.jsonp | GET | Pobiera listę gmin.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+start	 | N	 | Początkowe litery gminy. Wielkość liter nie ma znaczenia. Z powodów wydajnościowych najlepiej przyjąć minimum 3 pierwsze litery.<br>/api/communitis.jsonp?start=lub
+
+Wynik:
+
+```json
+{"data":[
+{"id":4788,"name":"Lubaczów"},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id |	Id gminy
+name |	Nazwa
 
 ## 7.	Pobranie drzewa kategorii
 
@@ -67,10 +157,125 @@ Nazwa	| Opis
 
 ## 11.	Pobranie pliku graficznego
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/files/*[file_id]* | GET |Pobiera plik graficzny. Metoda przeznaczona do użycia z tagiem `<img>`.<br>Nie zaleca się używać w widget z uwagi na możliwe duże rozmiary plików.<br>`<img scr="/api/files/11209">`
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+attachment_id	 | T	 | Id pliku. Zwykle jest brany z atrybutu attachments z wyniku pobrania obiektu (patrz Pobierz obiekt turystyczny).<br>/api/attachments/11209
+
+Wynik - w nagłówku response ustawiane jest:
+```
+Content-Disposition: inline; filename*=UTF-8'nazwa_pliku
+```
+
 ## 12.	Pobranie pliku załącznika
+
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/attachments/*[attachment_id]* | GET |Pobiera plik załącznika. Metoda przeznaczona do użycia z tagiem `<a>`.<br>Nie zaleca się używać w widget z uwagi na możliwe duże rozmiary plików.<br>`<a href="/api/attachments/11209">`
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+attachment_id	 | T	 | Id pliku. Zwykle jest brany z atrybutu attachments z wyniku pobrania obiektu (patrz Pobierz obiekt turystyczny).<br>/api/attachments/11209
+
+Wynik - w nagłówku response ustawiane jest:
+```
+Content-Disposition: inline; filename*=UTF-8'nazwa_pliku
+```
 
 ## 13.	Pobranie raportu PDF w wyników wyszukiwania
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/report/searchresult | POST |Pobiera raport PDF z wyników wyszukiwania.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+searchresult	 | T	 | Obiekt zwrócony przez metodę pobierającą obiekt turystyczny
+
+Przykład parametru wejściowego:
+
+```json
+[{
+"name": "Chata pod Zamkiem"
+"categories": [],
+"location":{"east":19.651695,"north":50.464316,"name":null,"province":null, "city":null,"street":"Zamkowa","houseNumber":""},
+"score":1.0,
+"shortText": ""
+},
+…]
+```
+
+Wynik - w nagłówku response ustawiane jest:
+```
+Content-Disposition: inline; filename*=UTF-8'nazwa_pliku
+```
+
 ## 14.	Pobranie raportu PDF z danego obiektu
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/report/object | POST |Pobiera raport PDF z danego obiektu.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+object	 | T	 | Obiekt zwrócony przez metodę pobierającą obiekt turystyczny
+
+Przykład parametru wejściowego:
+
+```json
+{
+"id":58903,
+"objectId":null,
+"name":"Restauracja na Zamku Królewskim",
+"znw":false,
+"newObject":false,
+"rightToLeft":false,
+"description":"",
+"attachments":[],
+"categories":[],
+"images":[],
+"location":{"east":20.217547,"north":50.034278,"name":"Niepołomice","province":"MAŁOPOLSKIE", "city":"Niepołomice","street":"Zamkowa 2","houseNumber":null},
+"price":{"adult":0.0,"child":0.0},
+"seeMoreList":[],
+"time":0.0,
+"language":{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false},
+"startDate":null,
+"endDate":null
+}
+
+```
+
+Wynik - w nagłówku response ustawiane jest:
+```
+Content-Disposition: inline; filename*=UTF-8'nazwa_pliku
+```
+
 ## 15.	Pobranie raportu PDF z wyznaczania trasy
+
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/report/route | POST |Pobiera raport PDF z wyznaczania trasy.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+route	 | T	 | Wynik wyszukiwania
+
+Przykład parametru wejściowego:
+
+```json
+{
+"startPoint":{"name":"Warszawa","east":19.651695,"north":50.464316},
+"finishPoint":{"name":"Zakopane","east":19.651695,"north":50.464316},
+"instructions": [{"description":"jedź prosto","distance":"12 km"},…],
+"distance": 352,
+"route":[{"name":"","east":19.651695,"north":50.464316},…],
+}
+```
+
+Wynik - w nagłówku response ustawiane jest:
+```
+Content-Disposition: inline; filename*=UTF-8'nazwa_pliku
+```
