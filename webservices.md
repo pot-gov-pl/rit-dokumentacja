@@ -19,6 +19,34 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 
 ## Spis treści
 
+1.	[Słownik](#1--Słownik)
+2.	[Udostępnione interfejsy w postaci webservice](#Udostępnione-interfejsy-w-postaci-webservice)
+3.	[Wspólne elementy](#Wspólne-elementy)
+  - [Metryka](#Metryka)
+  - [Obiekt turystyczny](#Obiekt-turystyczny)
+  - [Raport z wykonania](#Raport-z-wykonania)
+4.	[Operacje w CollectTouristObjects](#Operacje-w-CollectTouristObjects)
+  - [Operacja searchTouristObjects](#Operacja-searchTouristObjects)
+5.	[Operacje w CollectTouristObjectsCache](#Operacje-w-CollectTouristObjectsCache)
+  - [Operacja searchTouristObjectsInCache](#Operacja-searchTouristObjectsInCache)
+6.	[Operacje w GiveTouristObjects](#Operacje-w-GiveTouristObjects)
+  - [Operacja addModifyObject](#Operacja-addModifyObject)
+  - [Operacja addModifyObjects](#Operacja-addModifyObjects)
+  - [Operacja delObject](#Operacja-delObject)
+  - [Operacja delObjects](#Operacja-delObjects)
+  - [Operacja getReport](#Operacja-getReport)
+7.	[Operacje w MetadataOfRIT](#Operacje-w-MetadataOfRIT)
+  - [Operacja getMetadataOfRIT](#Operacja-getMetadataOfRIT)
+8.	[Operacje w GetTouristObjectLanguages](#Operacje-w-GetTouristObjectLanguages)
+  - [Operacja getLanguages](#Operacja-getLanguages)
+9.	[Operacje w GetTouristObjectEvents](#Operacje-w-GetTouristObjectEvents)
+  - [Operacja getEvents](#Operacja-getEvents)
+10.	[Atrybuty, kategorie i języki narodowe w RIT](#Atrybuty-kategorie-i-języki-narodowe-w-RIT)
+  - [Ad 1) Kategorie](#Ad-1-Kategorie)
+  - [Ad 2) Atrybuty](#Ad-2-Atrybuty)
+  - [Ad 3) Wersja językowa](#Ad-3-Wersja-językowa)
+  - [Ad 4) Dane adresowe obiektu](#Ad-4-Dane-adresowe-obiektu)
+
 ## 1.	Słownik
 
 **System RIT** – Repozytorium Informacji Turystycznej - system informatyczny złożony z:
@@ -524,7 +552,7 @@ Element searchConditionInCache w żądaniu ( request ) ma następującą postać
 	   <dateTo></dateTo>
 	</lastModifiedRange>
 </searchCondition>
-```xml
+```
 
 Opis elementów:
 
@@ -708,7 +736,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-metric	Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejszego dokumentu.		| element		| 1..1
+metric		| Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejszego dokumentu.		| element		| 1..1
 identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierSZ.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT.	| element	| 	0..unbounded
 identifierSZ		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	| element	| 	0..unbounded
 
@@ -791,8 +819,8 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-language	Język w którym zostanie udostępniona zawartość bazy merytorycznej Systemu RIT.	string	1..1
-metric	Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	element	1..1
+language	| Język w którym zostanie udostępniona zawartość bazy merytorycznej Systemu RIT.	| string	| 1..1
+metric	| Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| element	| 1..1
 
 Element  MetadataResponse w odpowiedzi ( response ):
 
@@ -851,7 +879,7 @@ Element  *ritAttribute*
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-code	| Unikalny kod atrybutu.	string	| 	1..1
+code	| Unikalny kod atrybutu.	| 	string	| 	1..1
 name	| 	Nazwa atrybutu w Systemie RIT	| 	string	| 	1..1
 description	| 	Opis atrybutu w systemie RIT.	|  	string	| 	0..1
 typeValidator	| 	Dopuszczalny typ danych, zgodnie z którym wartości atrybutów będą sprawdzane przy przekazywaniu do Systemu RIT:<br>- SHORT_TEXT, LONG_TEXT – dowolny ciąg znaków<br>- NUMBER – liczba całkowita<br>- MULTIPLY_LIST lub SINGLE_LIST  – atrybut typu słownikowego wymagany element 'dictionaryCode'<br>- COMPLEX – atrybut typu słownikowego wymagany element 'complexAttribute'<br>- BOOLEAN – typ boolean 'true' lub 'false'<br>- DATE – typ data	| 	string	| 	1..1
