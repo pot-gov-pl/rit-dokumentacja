@@ -471,8 +471,8 @@ Element searchCondition w żądaniu (request) ma następującą postać:
 
 Opis elementów:
 
-Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
----	| ---	| ---	| ---	| ---
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
 language	|	Język w którym zostaną udostępnione wartości wszystkich atrybutów, opisujących obiekt turystyczny.	|	string	|	1..1
 allForDistributionChannel	|	Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|	boolean	|	0..1
 searchAttributeAnd	|	Element pozwala na podanie wartości dowolnego atrybutu po którym odbywać się ma wyszukiwanie obiektów. Wyszukane zostaną wszystkie obiekty. Które posiadają danych atrybut o określonej wartości. Elementy  allForDistributionChannel,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelce: searchAttributeAnd.	|	element	|	0..1
@@ -497,8 +497,8 @@ Element 'CollectTouristObjectResponse' w odpowiedzi (response) ma następującą
 
 Opis elementów:
 
-Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
----	| ---	| ---	| ---	| ---
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
 status	|	Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	|	0..1
 info	|	Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.		| string	|	0..1
 touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	|	|
@@ -507,25 +507,417 @@ touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis element
 
 ### Operacja searchTouristObjectsInCache
 
+Element 'searchCondition' zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
+
+Dane są pobierane z cache, utworzonego w systemie RIT. Cache jest uaktualniany codziennie, w godzinach nocnych. Zawiera on wstępnie przygotowane dane o wszystkich obiektach dostępnych w systemie RIT. Zadaniem operacji jest  udostępnienie danych o obiektach, w znacznie krótszym czasie niż operacja 'searchTouristObject' w webservice 'CollectTouristObjects'. Operacja posiada 2 zoptymalizowane funkcjonalności:
+-	wybór wszystkich obiektów dostępnych dla danego kanału dystrybucji
+-	wybór obiektów zmodyfikowanych w określonym przedziale czasu
+
+Element searchConditionInCache w żądaniu ( request ) ma następującą postać:
+
+```xml
+ <searchCondition>
+	<language></language>
+	<allForDistributionChannel></allForDistributionChannel>
+	<lastModifiedRange>
+	   <dateFrom></dateFrom>
+	   <dateTo></dateTo>
+	</lastModifiedRange>
+</searchCondition>
+```xml
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+language	| 	Język w którym zostaną udostępnione wartości wszystkich atrybutów, opisujących obiekt turystyczny.		| string	| 	1..1
+allForDistributionChannel		| Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania. 	| 	boolean		| 0..1
+lastModifiedRange		| Element pozwala na podanie zakresu dat  lub jednego z krańców zakresu dat, odnoszących się do daty ostatniej modyfikacji obiektu turystycznego w Systemie RIT. Zwracane są wszystkie obiekty dostępne dla kanału dystrybucji w podanym zakresie dat.<br><br>Jedna z dat: dateFrom,  dateTo musi być zawsze podana.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd, objectIdentifier nie będą brane pod uwagę w kryteriach wyszukiwania.	| 	element	| 	0..1
+lastModifiedRange->dateFrom	| 	Dolny kraniec ograniczenia w zakresie dat.	| 	date	| 	0..1
+lastModifiedRange->dateTo	| 	Górny kraniec ograniczenia w zakresie dat.	| 	date	| 	0..1
+
+Element 'CollectTouristObjectCacheResponse' w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+   <CollectTouristObjectResponse>
+         <status></status>
+         <info></info>
+         <touristObject>
+         …....
+         <touristObject>
+   <CollectTouristObjectResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+status	|	Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	|	0..1
+info	|	Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.		| string	|	0..1
+touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	|	|
+
 ## 6.	Operacje w GiveTouristObjects
 
 ### Operacja addModifyObject
 
+Operacja **addModifyObject** jest przeznaczona do przekazywania danych jednego obiektu turystycznego, do systemu RIT. W czasie wywołania operacji, przekazywany obiekt jest przetwarzany w Systemie RIT i dopiero po przetworzeniu zwracany jest wynik operacji.   Operacja w wyniku działania zwraca raport opisujący zawierający status wykonania i ewentualne błędy stwierdzone podczas wykonania.
+
+Element AddModifyObjectRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+<AddModifyObjectRequest>
+ <metric>
+	.....
+ </metric>
+ <touristObject>
+  .....
+ </touristObject>
+</AddModifyObjectRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric		| Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejszego dokumentu.	| 	element	| 	1..1
+touristObject	| 	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	| element	| 	1..1
+
+
+Element AddModifyObjectResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<AddModifyObjectResponse>
+	 <report>
+	  .....
+	 </report>
+ </AddModifyObjectResponse>
+ ```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+report		| Opis elementu w rozdziale: **Wspólne elementy → Raport z wykonania** niniejszego dokumentu.	| element	| 	1..1
+
 ### Operacja addModifyObjects
+
+Operacja **addModifyObjects** jest przeznaczona do przekazywania danych więcej niż jednego obiektu turystycznego, do systemu RIT. W czasie wywołania operacji, przekazywany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
+
+Element AddModifyObjectsRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+<AddModifyObjectRequest>
+ <metric>
+	.....
+ </metric>
+ <touristObject>
+  .....
+ </touristObject>
+</AddModifyObjectRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric		| Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejszego dokumentu.		| element	| 	1..1
+touristObject	| 	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: **Wspólne elementy → Obiekt turystyczny** niniejszego dokumentu.	| 	element	| 	1..unbounded
+
+
+Element AddModifyObjectsResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<AddModifyObjectsResponse>
+   <transactionIdentifier></transactionIdentifier>
+</AddModifyObjectsResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+transactionIdentifier		| Unikalny identyfikator żądania. Wartość wymagana do pobrania raportu za pomocą operacji getReport.		| element		| 1..1
 
 ### Operacja delObject
 
+Operacja **delObject** jest przeznaczona do usuwania danych jednego obiektu turystycznego, z systemu RIT. Obiekt taki musi być uprzednio choć raz przekazany lub pobrany do/z Systemu RIT, za pomocą kanału dystrybucji. Operacja w wyniku działania zwraca raport opisujący zawierający status wykonania i ewentualne błędy stwierdzone podczas wykonania.
+
+Element DelObjectRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+<DelObjectRequest>
+	 <metric>
+	  ….....
+	 </metric>
+	 <identifierRIT>
+		…...........
+	 </identifierRIT>
+	 <identifierSZ>
+	…...........
+	 </identifierSZ>
+</DelObjectRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric		| Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| 	element	| 	1..1
+identifierRIT		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierSZ.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT. 	| 	element		| 0..1
+identifierSZ		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ. 	| element	| 	0..1
+
+
+Element DelObjectResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<DelObjectResponse>
+	 <report>
+	  .....
+	 </report>
+ </DelObjectResponse>
+ ```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+report	| 	Opis elementu w rozdziale: **Wspólne elementy → Raport** z wykonania niniejszego dokumentu.	| 	element		| 1..1
+
+
 ### Operacja delObjects
 
+Operacja delObjects jest przeznaczona do usuwania danych wielu obiektów turystycznych, z systemu RIT. Obiekty takie muszą być uprzednio choć raz przekazane lub pobrane do/z Systemu RIT, za pomocą kanału dystrybucji. W czasie wywołania operacji, usuwany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane, po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
+
+Element DelObjectsRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+<DelObjectsRequest>
+	 <metric>
+	  ….....
+	 </metric>
+	 <identifierRIT>
+		…...........
+	 </identifierRIT>
+	 <identifierSZ>
+	…...........
+	 </identifierSZ>
+</DelObjectsRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric	Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejszego dokumentu.		| element		| 1..1
+identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierSZ.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT.	| element	| 	0..unbounded
+identifierSZ		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	| element	| 	0..unbounded
+
+
+Element DelObjectsResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<DelObjectsResponse>
+	 <transactionIdentifier></transactionIdentifier>
+ </DelObjecstResponse>
+ ```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+transactionIdentifier		| Unikalny identyfikator żądania. Wartość wymagana do pobrania raportu za pomocą operacji getReport.		| element		| 1..1
+
+
 ### Operacja getReport
+
+Operacja **delObjects** jest przeznaczona do usuwania danych wielu obiektów turystycznych, z systemu RIT. Obiekty takie muszą być uprzednio choć raz przekazane lub pobrane do/z Systemu RIT, za pomocą kanału dystrybucji. W czasie wywołania operacji, usuwany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane, po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
+Element GetReportRequest w żądaniu ( request ) ma następującą postać:
+
+```xml
+<GetReportRequest>
+ <metric>
+  ....
+ </metric>
+ <transactionIdentifier></transactionIdentifier>
+</GetReportRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric	| Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| element	| 1..1
+transactionIdentifier	| Unikalny identyfikator żądania. Wartość uzyskana z wyniku działania operacji addModifyObjects, delObjects.	| element	| 1..1
+
+Element GetReportResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<GetReportResponse>
+  <status></status>
+  <info></info>
+  <report>
+
+  </report>
+</GetReportResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+status		| Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	| 1..1
+info	| Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.	| string	| 1..1
+report	| Opis elementu w rozdziale: **Wspólne elementy → Raport z wykonania** niniejszego dokumentu.	| element	| 0..unbounded
+
 
 ## 7.	Operacje w MetadataOfRIT
 
 ### Operacja getMetadataOfRIT
 
+Operacja pozwala na pobranie bazy merytorycznej Systemu RIT.
+
+Element  MetadataRequest w żądaniu ( request ):
+
+```xml
+ <MetadataRequest>
+         <language></language>
+         <metric>
+          …......
+         <metric>
+ </MetadataRequest>
+ ```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+language	Język w którym zostanie udostępniona zawartość bazy merytorycznej Systemu RIT.	string	1..1
+metric	Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	element	1..1
+
+Element  MetadataResponse w odpowiedzi ( response ):
+
+```xml
+  <MetadataResponse xmlns:ns3="http://www.pot.gov.pl/rit/integration/commonElements/RITException" xmlns:ns2="http://www.pot.gov.pl/rit/integration/commonElements/Metric" xmlns="http://www.pot.gov.pl/rit/integration/MetadataOfRIT">
+    <lastModificationDate></lastModificationDate>
+    <ritCategory>
+       <code></code>
+       <name></name>
+       <description></description>
+       <attributeCodes>
+         <attributeCode></attributeCode>
+       </attributeCodes>
+    </ritCategory>
+…..
+   <ritAttribute>
+       <code></code>
+       <name></name>
+       <description></description>
+       <typeValidator></typeValidator>
+       <typeUI></typeUI>
+       <dictionaryCode></dictionaryCode>
+       <complexAttribute>
+          <attributeCode></attributeCode>
+       </complexAttribute>
+    </ritAttribute>
+…..
+    <ritDictionary>
+       <code></code>
+       <name></name>
+       <value></value>
+    </ritDictionary>
+</MetadataResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+lastModificationDate		| Data ostatniej modyfikacji bazy merytorycznej. Jeśli którykolwiek z składowych bazy merytorycznej ulegnie zmianie, to w tym elemencie będzie znajdować się data ostatniej zmiany. Porównując tą wartość do daty ostatniego pobrania, można ustalić czy baza merytoryczna uległa zmianie.	| 	date	| 	1..1
+ritCategory	| 	Element opisujący zawartość słownika kategorii w Systemie RIT. <br><br>Opis podelementów w tabelce: *ritCategory*.	| 	element	| 	0..unbounded
+ritAttribute	| 	Element opisujący zawartość słownika atrybutów w Systemie RIT. <br><br>Opis podelementów w tabelce: *ritAttribute*.	| 	element	| 	0..unbounded
+ritDictionary	| 	Element opisujący zawartość słowników zdefiniowanych w  Systemie RIT,  na potrzeby atrybutów typu słownikowego.<br><br>Opis podelementów w tabelce: *ritDictionary*.<br><br>**Uwaga. Dane słowników województw, powiatów, gmin, miejscowości nie są zwracane.**	| 	element	| 	0..unbounded
+
+Element  *ritCategory*
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+code	| 	Unikalny kod kategorii do której przypisany jest obiekt.	| string	| 	1..1
+name	| 	Nazwa kategorii w Systemie RIT.	| string	| 1..1
+description	| 	Opis kategorii w systemie RIT. Używane tylko w interfejsie MetadataOfRIT.wsdl.	| string	| 0..1
+attributeCodes	| 	Lista kodów atrybutów które opisują kategorię.	| element	| 0..1
+attributeCode	| 	Kod atrybutu używany do opisania kategorii. Używane tylko w interfejsie MetadataOfRIT.wsdl.	| string	| 0..unbounded
+
+Element  *ritAttribute*
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+code	| Unikalny kod atrybutu.	string	| 	1..1
+name	| 	Nazwa atrybutu w Systemie RIT	| 	string	| 	1..1
+description	| 	Opis atrybutu w systemie RIT.	|  	string	| 	0..1
+typeValidator	| 	Dopuszczalny typ danych, zgodnie z którym wartości atrybutów będą sprawdzane przy przekazywaniu do Systemu RIT:<br>- SHORT_TEXT, LONG_TEXT – dowolny ciąg znaków<br>- NUMBER – liczba całkowita<br>- MULTIPLY_LIST lub SINGLE_LIST  – atrybut typu słownikowego wymagany element 'dictionaryCode'<br>- COMPLEX – atrybut typu słownikowego wymagany element 'complexAttribute'<br>- BOOLEAN – typ boolean 'true' lub 'false'<br>- DATE – typ data	| 	string	| 	1..1
+typeUI	| 	Typ danych który zostanie użyty do zaprezentowania wartości atrybutu w aplikacji wewnętrznej  i informatorze, w RIT. Element nie jest obowiązkowy i jest tylko sugestią sposobu prezentacji wartości atrybutu. <br><br>**Aktualnie lista typów UI nie jest ustalona.**	| 	string	| 	0..1
+maxLength	| 	Maksymalna wielkość wartości atrybutu dla atrybutu którego typeValidator = STRING.	| 	string	| 	0..1
+dictionaryCode	| Kod słownika w  Systemie RIT, na potrzeby atrybutów typu słownikowego. Element wypełniony gdy element typeValidator = 'MULTIPLY_LIST' lub 'SINGLE_LIST'<br><br>Patrz element: ritDictionary. 	| string	| 0..1
+complexAttribute	| 	Lista kodów atrybutów składających się na atrybut. Element wypełniony gdy element typeValidator = 'COMPLEX'.	|  	element	| 	0..1
+complexAttribute->attributeCode	| 	Kody atrybutów które składają się na typ złożony atrybutu.	| 	string	| 	0..unbounded
+
+Element  *ritDictionary*
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+code	| Unikalny kod słownika.	| 	string	| 	1..1
+name	| 	Nazwa słownika w Systemie RIT	| 	string	| 	1..1
+value	| 	Pozycje słownika.		| string	| 	0..unbounded
+
+
 ## 8.	Operacje w GetTouristObjectLanguages
 
 ### Operacja getLanguages
+
+Operacja pozwala na pobranie wersji językowych dla podanego obiektu.
+
+Element GetTouristObjectLanguagesRequest  w żądaniu ( request ) ma następującą postać:
+
+```xml
+ <GetTouristObjectLanguagesRequest>
+<metric>
+	…
+	</metric>
+	<objectIdentifier>
+	   <identifierRIT></identifierRIT>
+	   <identifierSZ>
+		  <identifierType></identifierType>
+		  <artificialIdentifier></artificialIdentifier>
+		  <databaseTable>obiekt</databaseTable>
+		  <concatenationOfField></concatenationOfField>
+	   </identifierSZ>
+	</objectIdentifier>
+</GetTouristObjectLanguagesRequest>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+metric	| 	Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| 	string	| 	1..1
+identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierSZ.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierRIT*.	| boolean	| 0..1
+identifierSZ	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierSZ*.	| element	| 0..1
+
+
+Element GetTouristObjectLanguagesResponse w odpowiedzi ( response ) ma następującą postać:
+
+```xml
+<GetTouristObjectLanguagesResponse>
+	<language></language>
+</GetTouristObjectLanguagesResponse>
+```
+
+Opis elementów:
+
+Element |	Przeznaczenie |	Typ XML |	Krotność
+---	| ---	| ---	| ---
+language		| Kod wersji językowej np.: pl-PL, de-DE itp.	| 	string	| 1..n
+
 
 ## 9.	Operacje w GetTouristObjectEvents
 
