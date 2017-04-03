@@ -9,6 +9,9 @@ Autor | Data ukończenia |	Opis zmian |	Wersja |	Status
 Jacek Guz |	18.11.2014 |	Utworzenie dokumentu |	1.0 |	Do przeglądu
 Jacek Guz |	21.01.2015 |	Pkt 7. Pobranie listy obiektów turystycznych i pkt 8. Pobranie listy obiektów turystycznych w pobliżu trasy. Dodano nowy parametr ascii. |	1.1	 | |
 
+## 1.	Wstęp
+Dokument opisuje API REST Informatora w wersji v2.
+
 ## 2.	Lista metod
 Nazwa	| Opis
 --- | ---
