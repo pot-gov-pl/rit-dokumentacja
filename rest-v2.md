@@ -24,6 +24,28 @@ Nazwa	| Opis
 
 ## 3.	Pobranie listy województw
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/v2/regions.jsonp | GET | Pobiera listę województw.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+(Brak) | |
+
+Wynik:
+
+```json
+{"data":[
+{"id":1912,"name":"DOLNOŚLĄSKIE"},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id |	Id województwa
+name |	Nazwa
+
 ## 4.	Pobranie listy miejscowości
 
 ## 5.	Pobranie listy powiatów

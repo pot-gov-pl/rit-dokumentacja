@@ -20,14 +20,14 @@ Metody, których nazwa kończy się na ".jsonp" są przeznaczone do wywołania z
 ```JavaScript
 $.ajax({
 url: 'https://rittest.poland.travel/informator-web/api/searchWithLang/pl/1.jsonp?text=zamek',
-                dataType: 'jsonp',
-                data: {},
-                success: function(result) {
-                	//obsługa zwróconych danych
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                	//obsługa błędów
-                }
+  dataType: 'jsonp',
+  data: {},
+  success: function(result) {
+  	//obsługa zwróconych danych
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+  	//obsługa błędów
+  }
 });
 ```
 
