@@ -149,6 +149,86 @@ name |	Nazwa
 
 ## 7.	Pobranie drzewa kategorii
 
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/categories/*[lang]*.jsonp | GET | Pobiera drzewo kategorii w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+lang	 | T	 | Język. Dopuszczalne wartości: `pl`, `en`, `de`, `fr`. Wielkość liter ma znaczenie. W przypadku użycia innej wartości przyjmowana jest wartość: `pl`.<br>/api/categories/pl.jsonp
+
+Wynik:
+
+```json
+{"data":[
+{"cat_attributes":[],"id":77,"name":"Root","parentId":null},
+…
+]}
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id |	Id kategorii
+name |	Nazwa
+parentId |	Id kategorii nadrzędnej. Wartość null oznacza, brak kategorii nadrzędnej.
+cat_attributes |	Lista atrybutów danej kategorii. Opis struktury atrybutu w poniższej tabelce.
+
+Struktura pojedynczego atrybutu:
+
+```json
+{"id":1,
+"name":"Nazwa",
+"type":"SHORT_TEXT",
+"value":null,
+"valueList":[],
+"values":null,
+"attributes":null,
+"dictType":null}
+```
+
+Pole atrybutu | Opis
+--- | ---
+id |	Id atrybutu
+name |	Nazwa
+type |	Typ atrybutu. Przyjmuje wartości:<br>SHORT_TEXT – krótki tekst<br>LONG_TEXT – długi tekst<br>DATE – data<br>NUMBER – liczba<br>COORDINATES – współrzędne geograficzne np.: 52.247749,21.014217<br>SINGLE_LIST – lista pojedynczego wyboru, zawiera słownik dopuszczalnych wartość (patrz parametr values)<br>MULTIPLY_LIST – lista wielokrotnego wyboru, , zawiera słownik dopuszczalnych wartości (patrz parametr values)<br>COMPLEX – atrybut grupujący, która zawiera listę atrybutów.
+value |	Wartość atrybutu. W przypadku pobierania drzewa kategorii zawsze ma wartość null. Jest wykorzystywany w przypadku pobierania obiektu turystycznego.
+valueList |	Wartości atrybutu gdy type SINGLE_LIST lub MULTIPLY_LIST. Zawiera listę id wybranych wartości słownikowych. W przypadku pobierania drzewa kategorii zawsze ma wartość `[]`. Jest wykorzystywany w przypadku pobierania obiektu turystycznego.
+values |Lista dopuszczalnych wartości słownikowych. Wypełniane tylko gdy  type SINGLE_LIST lub MULTIPLY_LIST.<br><br>
+Odstępstwem od tej reguły są atrybuty zawierające powiaty, gminy, miejscowości, dla nich nie jest to wypełniane (patrz parametr dictType). <br><br>Zobacz też przykład poniżej tabelki.
+attributes |	Lista atrybutów. Wypełniane tylko gdy type COMPLEX.<br><br>Zobacz przykład pod tabelą.
+dictType |	Typ słownika. Wypełniane tylko gdy  type SINGLE_LIST lub MULTIPLY_LIST. Może przyjmować wartości:<br>PROVINCE – słownik województw<br>DISTRICT – słownik powiatów<br>COMMUNITY – słownik gmin<br>PLACE – słownik miejscowości<br>OTHER – inny słowniki
+
+Przykład szczególnego przypadku `values` dla atrybutu typu "województwo":
+
+```json
+{"id":9,
+"name":"Województwo",
+"type":"SINGLE_LIST",
+"value":null,
+"valueList":[],
+"values":[
+{"id":1912,"value":"DOLNOŚLĄSKIE"},
+{"id":1913,"value":"KUJAWSKOPOMORSKIE"},
+…],
+"attributes":null
+,"dictType":"PROVINCE"}
+```
+
+Przykład szczególnego przypadku `attributes` dla atrybutu typu COMPLEX:
+
+```json
+{"id":2,
+"name":"Opis",
+"type":"COMPLEX",
+"value":null,
+"valueList":[],
+"values":null,
+"attributes":[
+{"id":3,"name":"Opis skrócony","type":"LONG_TEXT","value":null,"valueList":[],"values":null, "attributes":null,"dictType":null},
+{"id":4,"name":"Pełny opis","type":"LONG_TEXT","value":null,"valueList":[],"values":null, "attributes":null,"dictType":null}],"dictType":null}
+]}
+```
+
 ## 8.	Pobranie obiektu turystycznego
 
 ## 9.	Wyszukanie obiektów
