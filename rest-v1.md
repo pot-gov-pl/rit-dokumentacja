@@ -193,8 +193,7 @@ name |	Nazwa
 type |	Typ atrybutu. Przyjmuje wartości:<br>SHORT_TEXT – krótki tekst<br>LONG_TEXT – długi tekst<br>DATE – data<br>NUMBER – liczba<br>COORDINATES – współrzędne geograficzne np.: 52.247749,21.014217<br>SINGLE_LIST – lista pojedynczego wyboru, zawiera słownik dopuszczalnych wartość (patrz parametr values)<br>MULTIPLY_LIST – lista wielokrotnego wyboru, , zawiera słownik dopuszczalnych wartości (patrz parametr values)<br>COMPLEX – atrybut grupujący, która zawiera listę atrybutów.
 value |	Wartość atrybutu. W przypadku pobierania drzewa kategorii zawsze ma wartość null. Jest wykorzystywany w przypadku pobierania obiektu turystycznego.
 valueList |	Wartości atrybutu gdy type SINGLE_LIST lub MULTIPLY_LIST. Zawiera listę id wybranych wartości słownikowych. W przypadku pobierania drzewa kategorii zawsze ma wartość `[]`. Jest wykorzystywany w przypadku pobierania obiektu turystycznego.
-values |Lista dopuszczalnych wartości słownikowych. Wypełniane tylko gdy  type SINGLE_LIST lub MULTIPLY_LIST.<br><br>
-Odstępstwem od tej reguły są atrybuty zawierające powiaty, gminy, miejscowości, dla nich nie jest to wypełniane (patrz parametr dictType). <br><br>Zobacz też przykład poniżej tabelki.
+values |Lista dopuszczalnych wartości słownikowych. Wypełniane tylko gdy  type SINGLE_LIST lub MULTIPLY_LIST.<br><br>Odstępstwem od tej reguły są atrybuty zawierające powiaty, gminy, miejscowości, dla nich nie jest to wypełniane (patrz parametr dictType). <br><br>Zobacz też przykład poniżej tabelki.
 attributes |	Lista atrybutów. Wypełniane tylko gdy type COMPLEX.<br><br>Zobacz przykład pod tabelą.
 dictType |	Typ słownika. Wypełniane tylko gdy  type SINGLE_LIST lub MULTIPLY_LIST. Może przyjmować wartości:<br>PROVINCE – słownik województw<br>DISTRICT – słownik powiatów<br>COMMUNITY – słownik gmin<br>PLACE – słownik miejscowości<br>OTHER – inny słowniki
 
@@ -230,6 +229,60 @@ Przykład szczególnego przypadku `attributes` dla atrybutu typu COMPLEX:
 ```
 
 ## 8.	Pobranie obiektu turystycznego
+
+Wywołanie | Metoda | Opis
+--- | --- | ---
+/api/objects/*[lang]*/*[object_id]*.jsonp | GET | Pobiera obiekt turystyczny w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
+
+Parametr wejściowy | Wymagany | Opis
+--- | --- | ---
+lang	 | T	 | Język. Dopuszczalne wartości: `pl`, `en`, `de`, `fr`. Wielkość liter ma znaczenie. W przypadku użycia innej wartości przyjmowana jest wartość: `pl`.<br>/api/objects/pl/50128.jsonp
+object_id	 | T	 | Id obiektu.<br>/api/objects/pl/50128.jsonp
+
+Wynik:
+
+```json
+{"data":{
+"id":58903,
+"objectId":null,
+"name":"Restauracja na Zamku Królewskim",
+"znw":false,
+"newObject":false,
+"rightToLeft":false,
+"description":"",
+"attachments":[],
+"categories":[],
+"images":[],
+"location":{"east":20.217547,"north":50.034278,"name":"Niepołomice","province":"MAŁOPOLSKIE", "city":"Niepołomice","street":"Zamkowa 2","houseNumber":null},
+"price":{"adult":0.0,"child":0.0},
+"seeMoreList":[],
+"time":0.0,
+"language":{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false},
+"startDate":null,
+"endDate":null}}
+
+```
+
+Parametr wynikowy | Opis
+--- | ---
+id	| Id obiektu
+objectId |	Id obiektu. Nie używany w widget. Jest wykorzystywany w Informatorze.
+name |	Nazwa
+znw |	Czy zawsze na wierzchu? Nie używany w widget. Zawsze ma wartość false. Jest wykorzystywany w Informatorze.
+newObject |	Czy obiekt jest nowy?
+rightToLeft |	Kierunek czytania. Wartość false oznacza z lewej do prawej.
+description |	Opis
+attachments |	Lista załączników.<br><br>Każdy załącznik ma format: `{"id": 1, "name": "nazwa_załącznika", "type"="document", "fileName"="Zeszyt1.csv"}`, gdzie:<br>type – typ załącznika, może przyjmować wartości: image, movie, document;<br>fileName – nazwa pliku.
+categories |	Lista kategorii i atrybutów.<br><br>Format pojedynczej kategorii taki sam jak przy opisie pobierania drzewa kategorii: `{"cat_attributes":[],"id":77,"name":"Root","parentId":null}`.
+images |	Lista zdjęć obiektu.<br><br>Każde zdjęcie ma format: `{"id": 1, "name": "nazwa_zdjęcia", "type"="image", "fileName"="zamek001.png"}`, gdzie:<br>type – typ załącznika, może przyjmować wartości: image;<br>fileName – nazwa pliku.
+location |	Położenie geograficzne obiektu.<br><br>Format: `{"east":20.217547,"north":50.034278,"name":"Niepołomice","province":"MAŁOPOLSKIE", "city":"Niepołomice","street":"Zamkowa 2","houseNumber":null}`, gdzie:<br>east – długość geograficzna wschodnia,<br>north – szerokość geograficzna północna,<br>name - nazwa,<br>province - województwo, <br>city – miejscowość, <br>street - ulica,<br>houseNumber – numer domu.
+price |	Cena biletu:<br>adult – dla dorosłego, <br>child – dla dziecka.
+seeMoreList |	Lista obiektów powiązanych.<br><br>Każdy obiekt powiązany ma format:`{"id": 1, "name": "nazwa_obiektu"}`.
+time |	Czas zwiedzania w godzinach.
+language |	Język danych obiektu.<br><br>Format: `{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false}`, gdzie: id – id języka,<br>name - nazwa, <br>shortName- nazwa skrócona,<br>selected – nie używane w widget, zawsze false, <br>rightToLeft – kierunek czytania. Wartość false oznacza z lewej do prawej.
+startDate |	Data ważności od
+endDate |	Data ważności do
+
 
 ## 9.	Wyszukanie obiektów
 
