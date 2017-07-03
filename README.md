@@ -1,4 +1,11 @@
-# RIT - dokumentacja interfejsów
+# Repozytorium Informacji Turystycznej
+
+## Użytkowanie systemu
+
+Dokument | Status
+--- | ---
+
+## Dokumentacja interfejsów systemu
 
 Dokument | Status
 --- | ---
