@@ -4,6 +4,7 @@
 
 Dokument | Status
 --- | ---
+[Wytyczne do redakcji treści baz danych artykułów i obiektów turystycznych](wytyczne-do-redakcji-tresci.md) | Aktualny i kompletny dokument dostępny online
 
 ## Dokumentacja interfejsów systemu
 
