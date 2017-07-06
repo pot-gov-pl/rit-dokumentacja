@@ -104,11 +104,13 @@ Atrybuty tekstowe mogą być opatrzone wymogami walidacyjnymi wyrażonymi np. w 
 **Obiekt** – zbiór danych zawartych w atrybutach i posiadający swój typ (przypisany do liścia drzewa). Identyfikatory obiektów składają się po prostu z wartości numerycznej. Użytkownicy systemu RIT o uprawnieniach redaktorskich mogą scalać istniejące obiekty i wówczas – pośrednio – identyfikator może ulec zmianie.
 
 Przykładowa organizacja według przyjętego modelu mogłaby wyglądać tak:
+
 ![Drzewiasta hierarchia kategorii](images/hierarchia-kategorii.png)
 
 W zilustrowanej organizacji istnieją trzy typy obiektów: Hotel, Motel i Restauracja. Hotel i Motel należą do kategorii „Noclegi”, więc wysyłając do systemu RIT zapytanie o przekazanie wszystkich obiektów kategorii „Noclegi” otrzymamy zwrotnie wszystkie obiekty typu Hotel i Motel. Wysyłając zapytanie o „Obiekty turystyczne” otrzymamy obiekty wszystkich typów. A zapytanie o obiekty „Hotel” zwróci tylko obiekty typu Hotel.
 
 Dziedziczenie atrybutów działać zaś będzie następująco (znak * oznacza atrybuty dziedziczone, a znak „+” oznacza atrybuty dodane w danej kategorii):
+
 ![Dziedziczenie atrybutów w drzewie kategorii](images/hierarchia-dziedziczenie-atrybutow.png)
 
 Powyższe drzewo korzysta z pięciu atrybutów numerowanych od A001 do A005. Obiekt, który miałby typ „Hotel” mógłby być opisany atrybutami A001, A002 oraz A004, czyli nazwą, ilością pokoi oraz kategoryzacją hotelową. A001 mogłoby być atrybutem tekstowym, A002 atrybutem liczbowym, a A004 atrybutem słownikowym (o numerze np. D001), ponieważ kategoryzacja hotelowa jest ściśle określona jako liczba gwiazdek lub informacja o tym, że hotel jest w trakcie kategoryzowania przez Urząd Marszałkowski.
