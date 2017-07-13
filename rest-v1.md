@@ -334,7 +334,7 @@ rightToLeft|	Kierunek czytania. Wartość false oznacza z lewej do prawej.
 categories|	Lista kategorii bez atrybutów. cat_atrributes ma zawsze wartość [].<br><br>Format pojedynczej kategorii taki sam jak przy opisie pobierania drzewa kategorii: `{"cat_attributes":[],"id":77,"name":"Root","parentId":null}`.
 location|	Położenie geograficzne obiektu.<br><br>Format: `{"east":19.651695,"north":50.464316,"name":null,"province":null,"city":null, "street":"Zamkowa","houseNumber":""}`, gdzie:<br>east – długość geograficzna wschodnia,<br>north – szerokość geograficzna północna,<br>name - nazwa,<br>province - województwo,<br>city – miejscowość <br>street - ulica,<br>houseNumber – numer domu
 score|	Wartość liczbowa oznaczająca stopień dopasowania obiektu do kryteriów wyszukiwania.<br><br>Obiekty z większym score są lepiej dopasowane. Wyniki wyszukiwania są sortowane po tej wartości. Wartość score jest wyznaczana przez SOLR. Sposób wyznaczania można znaleźć pod adresem https://wiki.apache.org/solr/SolrRelevancyFAQ#How_are_documents_scored
-shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br>"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."
+shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br><br>`"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."`
 language|	Język danych obiektu.<br><br>Format: `{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false}`, gdzie:<br>id – id języka<br>name - nazwa<br>shortName- nazwa skrócona,<br>selected – nie używane w widget, zawsze false<br>rightToLeft – kierunek czytania. Wartość false oznacza z lewej do prawej.
 pageInfo|	Informacja techniczna o stronicowaniu wyników wyszukiwania.<br><br>Format: `{"page":1,"pageSize":8,"maxPages":83,"totalRecords":412}}`, gdzie:<br>page – aktualna strona wyników<br>pageSize – rozmiar strony<br>maxPages – liczba stron<br>totalRecords – liczba wszystkich wyników.
 
@@ -388,7 +388,7 @@ rightToLeft|	Kierunek czytania. Wartość false oznacza z lewej do prawej.
 categories|	Lista kategorii bez atrybutów. cat_atrributes ma zawsze wartość [].<br><br>Format pojedynczej kategorii taki sam jak przy opisie pobierania drzewa kategorii: `{"cat_attributes":[],"id":77,"name":"Root","parentId":null}`.
 location|	Położenie geograficzne obiektu.<br><br>Format: `{"east":19.651695,"north":50.464316,"name":null,"province":null,"city":null, "street":"Zamkowa","houseNumber":""}`, gdzie:<br>east – długość geograficzna wschodnia,<br>north – szerokość geograficzna północna,<br>name - nazwa,<br>province - województwo,<br>city – miejscowość <br>street - ulica,<br>houseNumber – numer domu
 score|	Wartość liczbowa oznaczająca stopień dopasowania obiektu do kryteriów wyszukiwania.<br><br>Obiekty z większym score są lepiej dopasowane. Wyniki wyszukiwania są sortowane po tej wartości. Wartość score jest wyznaczana przez SOLR. Sposób wyznaczania można znaleźć pod adresem https://wiki.apache.org/solr/SolrRelevancyFAQ#How_are_documents_scored
-shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br>"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."
+shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br><br>`"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."`
 language|	Język danych obiektu.<br><br>Format: `{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false}`, gdzie:<br>id – id języka<br>name - nazwa<br>shortName- nazwa skrócona,<br>selected – nie używane w widget, zawsze false<br>rightToLeft – kierunek czytania. Wartość false oznacza z lewej do prawej.
 pageInfo|	Informacja techniczna o stronicowaniu wyników wyszukiwania.<br><br>Format: `{"page":1,"pageSize":8,"maxPages":83,"totalRecords":412}}`, gdzie:<br>page – aktualna strona wyników<br>pageSize – rozmiar strony<br>maxPages – liczba stron<br>totalRecords – liczba wszystkich wyników.
 
@@ -436,13 +436,13 @@ Przykład parametru wejściowego:
 
 ```json
 [{
-"name": "Chata pod Zamkiem"
+"name": "Chata pod Zamkiem",
 "categories": [],
 "location":{"east":19.651695,"north":50.464316,"name":null,"province":null, "city":null,"street":"Zamkowa","houseNumber":""},
 "score":1.0,
 "shortText": ""
 },
-…]
+...]
 ```
 
 Wynik - w nagłówku response ustawiane jest:
@@ -506,9 +506,9 @@ Przykład parametru wejściowego:
 {
 "startPoint":{"name":"Warszawa","east":19.651695,"north":50.464316},
 "finishPoint":{"name":"Zakopane","east":19.651695,"north":50.464316},
-"instructions": [{"description":"jedź prosto","distance":"12 km"},…],
+"instructions": [{"description":"jedź prosto","distance":"12 km"}, ... ],
 "distance": 352,
-"route":[{"name":"","east":19.651695,"north":50.464316},…],
+"route":[{"name":"","east":19.651695,"north":50.464316}, ... ],
 }
 ```
 

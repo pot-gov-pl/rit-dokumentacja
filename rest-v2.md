@@ -19,8 +19,8 @@ Nazwa	| Opis
 /api/v2/cities.jsonp |	Pobiera listę miejscowości spełniających podane kryteria.
 /api/v2/districts.jsonp |	Pobiera listę powiatów spełniających podane kryteria.
 /api/v2/communitis.jsonp |	Pobiera listę gmin spełniających podane kryteria.
-/api/v2//search/{pageNo}/{pageSize}.jsonp |	Pobiera listę obiektów turystycznych spełniających podane kryteria.
-/api/v2//searchclose/{pageNo}/{pageSize}.jsonp |	Pobiera listę obiektów turystycznych w pobliżu trasy spełniających podane kryteria.
+/api/v2/search/{pageNo}/{pageSize}.jsonp |	Pobiera listę obiektów turystycznych spełniających podane kryteria.
+/api/v2/searchclose/{pageNo}/{pageSize}.jsonp |	Pobiera listę obiektów turystycznych w pobliżu trasy spełniających podane kryteria.
 
 ## 3.	Pobranie listy województw
 
@@ -203,7 +203,7 @@ rightToLeft|	Kierunek czytania. Wartość false oznacza z lewej do prawej.
 categories|	Lista kategorii bez atrybutów. <br><br>Format pojedynczej kategorii: `{"cat_attributes":[],"id":77,"name":"Root","parentId":null}`.
 location|	Położenie geograficzne obiektu.<br><br>Format: `{"east":19.651695,"north":50.464316,"name":null,"province":null,"city":null, "street":"Zamkowa","houseNumber":""}`, gdzie:<br>east – długość geograficzna wschodnia,<br>north – szerokość geograficzna północna,<br>name - nazwa,<br>province - województwo,<br>city – miejscowość <br>street - ulica,<br>houseNumber – numer domu
 score|	Wartość liczbowa oznaczająca stopień dopasowania obiektu do kryteriów wyszukiwania.<br><br>Obiekty z większym score są lepiej dopasowane. Wyniki wyszukiwania są sortowane po tej wartości. Wartość score jest wyznaczana przez SOLR. Sposób wyznaczania można znaleźć pod adresem https://wiki.apache.org/solr/SolrRelevancyFAQ#How_are_documents_scored
-shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br>"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."
+shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br><br>`"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."`
 language|	Język danych obiektu.<br><br>Format: `{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false}`, gdzie:<br>id – id języka<br>name - nazwa<br>shortName- nazwa skrócona,<br>selected – nie używane w widget, zawsze false<br>rightToLeft – kierunek czytania. Wartość false oznacza z lewej do prawej.
 pageInfo|	Informacja techniczna o stronicowaniu wyników wyszukiwania.<br><br>Format: `{"page":1,"pageSize":8,"maxPages":83,"totalRecords":412}}`, gdzie:<br>page – aktualna strona wyników<br>pageSize – rozmiar strony<br>maxPages – liczba stron<br>totalRecords – liczba wszystkich wyników.
 
@@ -257,6 +257,6 @@ rightToLeft|	Kierunek czytania. Wartość false oznacza z lewej do prawej.
 categories|	Lista kategorii bez atrybutów. cat_atrributes ma zawsze wartość [].<br><br>Format pojedynczej kategorii taki sam jak przy opisie pobierania drzewa kategorii: `{"cat_attributes":[],"id":77,"name":"Root","parentId":null}`.
 location|	Położenie geograficzne obiektu.<br><br>Format: `{"east":19.651695,"north":50.464316,"name":null,"province":null,"city":null, "street":"Zamkowa","houseNumber":""}`, gdzie:<br>east – długość geograficzna wschodnia,<br>north – szerokość geograficzna północna,<br>name - nazwa,<br>province - województwo,<br>city – miejscowość <br>street - ulica,<br>houseNumber – numer domu
 score|	Wartość liczbowa oznaczająca stopień dopasowania obiektu do kryteriów wyszukiwania.<br><br>Obiekty z większym score są lepiej dopasowane. Wyniki wyszukiwania są sortowane po tej wartości. Wartość score jest wyznaczana przez SOLR. Sposób wyznaczania można znaleźć pod adresem https://wiki.apache.org/solr/SolrRelevancyFAQ#How_are_documents_scored
-shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br>"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."
+shortText|	W przypadku wyszukiwania z parametrem text, zawiera on fragmenty tekstu w którym znaleziono szukaną frazę. Znaleziona fraza jest objęta tagiem \<em\>. Np. dla text=zamek, może mieć wartość <br><br>`"...Chata pod \<em\>Zamkiem\</em\>...\\n(...)\\n...www.gastronauci.pl/pl/5620-chata-pod-\<em\>zamkiem\</em\>-ogrodzieniec..."`
 language|	Język danych obiektu.<br><br>Format: `{"id":45,"name":"Polski","shortName":"pl-PL","selected":false,"rightToLeft":false}`, gdzie:<br>id – id języka<br>name - nazwa<br>shortName- nazwa skrócona,<br>selected – nie używane w widget, zawsze false<br>rightToLeft – kierunek czytania. Wartość false oznacza z lewej do prawej.
 pageInfo|	Informacja techniczna o stronicowaniu wyników wyszukiwania.<br><br>Format: `{"page":1,"pageSize":8,"maxPages":83,"totalRecords":412}}`, gdzie:<br>page – aktualna strona wyników<br>pageSize – rozmiar strony<br>maxPages – liczba stron<br>totalRecords – liczba wszystkich wyników.
