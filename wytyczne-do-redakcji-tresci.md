@@ -22,23 +22,26 @@ Zmiany w treści dokumentu można proponować także poprzez *pull request* wobe
 ####	Edycja opisu tekstowego obiektu
 
 #####	Opis krótki
-Zaleca się, aby opis krótki (tzw. zajawka), zawierał się w około 500 znakach i około 1-2 zdaniach.
+Zaleca się, aby opis krótki zawierał się w około 500 znakach i około 1-2 zdaniach. Jest używany najcześciej na listach wyników wyszukiwania.
 
 #####	Opis długi
-Wymaga się, aby opis długi nie zawierał w sobie (a w szczególności: nie rozpoczynał się treścią) dokładnej treści opisu krótkiego. Może natomiast zawierać te same informacje w innej formie.
+Wymaga się, aby opis długi nie zawierał w sobie dokładnej treści opisu krótkiego. Może natomiast zawierać te same informacje w innej formie.
+
+Opis długi nie zawiera ograniczenia długości, ale należy pamiętac, ze im dłuższy opis, tym więcej trudu trzeba włożyc w przygotowanie jego wielojezycznych tlumaczen, okresową weryfikacje poprawności i inne działania. Zaleca się zachowac zdrowy rozsądek.
 
 #####	Oryginalność opisów
 Opisy muszą być wytworzone bezpośrednio przez redaktorów lub pochodzić ze źródła, które udzieliło do nich stosownych praw licencyjnych.
 
 #####	Wklejanie gotowego tekstu do opisu obiektu
 Mając przygotowany uprzednio tekst i przeklejając go do edytora opisu obiektu należy dopilnować, aby wklejony został tzw. zwykły tekst, czyli tekst pozbawiony dodatkowych ukrytych informacji (np. dotyczących wyglądu tekstu). Takie ukryte informacje mogą niekorzystnie wpływać na przetwarzanie i wyświetlanie danych.
-W szczególności problem ukrytych informacji występuje przy kopiowaniu z dokumentów programu **Microsoft Word**. Wówczas należy najpierw przekopiować je do edytora tekstu nie obsługującego ukrytych informacji (np. do **Notatnika**) i z tego edytora ponownie te informacje skopiować, aby wkleić w opis obiektu.
+
+W szczególności problem ukrytych informacji występuje przy kopiowaniu z dokumentów programu *Microsoft Word*. Wówczas należy najpierw przekopiować je do edytora tekstu nie obsługującego ukrytych informacji (np. do *Notatnika*) i z tego edytora ponownie te informacje skopiować, aby wkleić w opis obiektu.
 
 #### Edycja zdjęć obiektu
 
 #####	Oryginalność zdjęć
 
-Zdjęcia muszą pochodzić ze źródła, które udzieliło do nich stosownych praw licencyjnych.
+Zdjęcia muszą pochodzić ze źródła, które udzieliło do nich stosownych praw licencyjnych. W przypadku wprowadzania ich bezpośrednio w systemie RIT możliwe jest dodanie informacji o licencji o określenie rozmaitych ograniczeń udostępniania - warto z tego korzystac.
 
 ### Wytyczne do wydarzeń turystycznych
 
@@ -57,9 +60,11 @@ Jeżeli nie jest to uzasadnione specyficznym charakterem wydarzenia, nie należy
 *	Dacie i czasie wydarzenia;
 *	Lokalizacji wydarzenia.
 
-W powyższego wynika, ze jako zdjęcia szczególnie nie powinny być używane plakaty i inne podobne materiały reklamujące dane wydarzenie.
+W powyższego wynika, że jako zdjęcia szczególnie nie powinny być używane plakaty i inne podobne materiały reklamujące dane wydarzenie, które najczęściej zawierają numery edycji, daty, elementu planu wydarzenia.
+
 Wszystkie wyżej wymienione informacje, które nie powinny znaleźć się w opisie i na zdjęciach, należy umieścić i aktualizować w odpowiednio do tego przeznaczonych polach formularza edycyjnego odpowiadających specjalnym atrybutom wydarzenia.
-Reguła ta ma szczególne znaczenie wobec treści, które będą tłumaczone na inne języki. Większa uniwersalność opisu przekłada się na jego mniejszą zmienność, co pociąga za sobą mniej prac związanych z aktualizacją tłumaczeń. W przypadku zdjęć proces tłumaczeniowy może być praktycznie niemożliwy, więc musza być one absolutnie uniwersalne.
+
+Reguła ta ma szczególne znaczenie wobec treści, które będą tłumaczone na inne języki. Większa uniwersalność opisu przekłada się na jego mniejszą zmienność, co pociąga za sobą mniej prac związanych z aktualizacją tłumaczeń. W przypadku zdjęć proces tłumaczeniowy może być praktycznie niemożliwy, więc musza być one jak najbardziej uniwersalne.
 
 #####	Przykład
 Nie należy pisać "23 Finał Wielkiej Orkiestry Świątecznej Pomocy" lecz "Wielka Orkiestra Świątecznej Pomocy" lub "Finał Wielkiej Orkiestry Świątecznej Pomocy".
