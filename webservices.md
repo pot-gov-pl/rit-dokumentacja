@@ -19,29 +19,29 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 
 ## Spis treści
 
-1.	[Słownik](#1---słownik)
-2.	[Udostępnione interfejsy w postaci webservice](#2---udostępnione-interfejsy-w-postaci-webservice)
-3.	[Wspólne elementy](#3---wspólne-elementy)
+1.	[Słownik](#1słownik)
+2.	[Udostępnione interfejsy w postaci webservice](#2udostępnione-interfejsy-w-postaci-webservice)
+3.	[Wspólne elementy](#3wspólne-elementy)
   - [Metryka](#metryka)
   - [Obiekt turystyczny](#obiekt-turystyczny)
   - [Raport z wykonania](#raport-z-wykonania)
-4.	[Operacje w CollectTouristObjects](#4---operacje-w-collecttouristobjects)
+4.	[Operacje w CollectTouristObjects](#4operacje-w-collecttouristobjects)
   - [Operacja searchTouristObjects](#operacja-searchtouristobjects)
-5.	[Operacje w CollectTouristObjectsCache](#5---operacje-w-collecttouristobjectscache)
+5.	[Operacje w CollectTouristObjectsCache](#5operacje-w-collecttouristobjectscache)
   - [Operacja searchTouristObjectsInCache](#operacja-searchTouristObjectsInCache)
-6.	[Operacje w GiveTouristObjects](#6---operacje-w-givetouristobjects)
+6.	[Operacje w GiveTouristObjects](#6operacje-w-givetouristobjects)
   - [Operacja addModifyObject](#operacja-addmodifyobject)
   - [Operacja addModifyObjects](#operacja-addmodifyobjects)
   - [Operacja delObject](#operacja-delobject)
   - [Operacja delObjects](#operacja-delobjects)
   - [Operacja getReport](#operacja-getreport)
-7.	[Operacje w MetadataOfRIT](#7---operacje-w-metadataofrit)
+7.	[Operacje w MetadataOfRIT](#7operacje-w-metadataofrit)
   - [Operacja getMetadataOfRIT](#operacja-getmetadataofrit)
-8.	[Operacje w GetTouristObjectLanguages](#8---operacje-w-gettouristobjectlanguages)
+8.	[Operacje w GetTouristObjectLanguages](#8operacje-w-gettouristobjectlanguages)
   - [Operacja getLanguages](#operacja-getLanguages)
-9.	[Operacje w GetTouristObjectEvents](#9---operacje-w-gettouristobjectevents)
+9.	[Operacje w GetTouristObjectEvents](#9operacje-w-gettouristobjectevents)
   - [Operacja getEvents](#operacja-getevents)
-10.	[Atrybuty, kategorie i języki narodowe w RIT](#10---atrybuty-kategorie-i-języki-narodowe-w-RIT)
+10.	[Atrybuty, kategorie i języki narodowe w RIT](#10atrybuty-kategorie-i-języki-narodowe-w-rit)
   - [Ad 1) Kategorie](#ad-1-kategorie)
   - [Ad 2) Atrybuty](#ad-2-atrybuty)
   - [Ad 3) Wersja językowa](#ad-3-wersja-językowa)
@@ -52,7 +52,7 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 **System RIT** – Repozytorium Informacji Turystycznej - system informatyczny złożony z:
 - bazy danych obiektów turystycznych – zwanej Bazą RIT,
 -	mechanizmów wymiany danych z systemami zewnętrznymi – zwanych zespołem interfejsów wymiany danych,
-- aplikacji zarządzającej bazą danych oraz zarządzającej mechanizmami wymiany danych – zwanej Aplikacją RIT,
+- aplikacji zarządzającej bazą danych oraz zarządzającej mechanizmami wymiany danych – zwanej Aplikacją RIT.
 
 **System zewnętrzny** – dowolna baza danych oraz oprogramowanie, przechowujący i przetwarzający dane o obiektach turystycznych.
 
@@ -62,7 +62,7 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 
 **Obiekt turystyczny** –  dokładnie jeden obiekt z dziedziny obiektów turystycznych (hotel, restauracja, atrakcja turystyczna, wydarzenie itp.).
 
-**Kanał dystrybucji** - umowna nazwa, zestawu usług, technologii i konfiguracji, umiejscowionych w systemie RIT, pozwalająca na wymianę danych ( przekazanie i pobranie ), pomiędzy Systemem zewnętrznym a Systemem RIT.
+**Kanał dystrybucji** - umowna nazwa zestawu usług, technologii i konfiguracji, umiejscowionych w systemie RIT, pozwalająca na wymianę danych ( przekazanie i pobranie ), pomiędzy Systemem zewnętrznym a Systemem RIT.
 
 ## 2.	Udostępnione interfejsy w postaci webservice
 
