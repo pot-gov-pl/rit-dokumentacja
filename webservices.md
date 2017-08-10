@@ -358,7 +358,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
-fileName	|	Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.	|	GIVE/COLLECT	|	string	|	1..1
+fileName	|	Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.<br><br>⚠ Obecnie (2017-08) w przypadku przekazania pustej wartości system RIT przepisuje nazwę pliku z pola URL, ale nie należy polegać na tym zachowaniu.	|	GIVE/COLLECT	|	string	|	1..1
 fileType	|	Typ pliku (rozszerzenie pliku lub ContentType dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
 URL	|	Adres URL wskazujący na plik binarny.<br><br>Dla GIVE, jest to dowolny adres internetowy dostępny dla systemu RIT. Adres powinien korzystać z metody 'HTTP', nie być zabezpieczony żadną z metod autentykacji.<br><br>Dla COLLECT, jest to adres internetowy, dla części integracyjnej aplikacji RIT. Pliki udostępnianie pod tym adresem będą dostępne przez 7 dni od daty pobrania obiektu z systemu RIT.	|	GIVE/COLLECT	|	string	|	1..1
 certificate	|	Element opisuje pozwolenie na użytkowanie pliku udzielone przez POT / udostępniającego plik.	|	COLLECT	|	element	|	0..1
