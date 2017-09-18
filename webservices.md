@@ -4,18 +4,19 @@ Wersja 7.1, Polska Organizacja Turystyczna, Betacom S.A.
 
 ## Historia zmian
 
-Autor | Data ukończenia |	Opis zmian |	Wersja |	Status
+Autor | Data ukończenia |	Opis zmian |	Wersja
 --- | --- | --- | --- | ---
-Robert Stepuch |	2013-03-21 |	Utworzenie dokumentu |	1.0 |	Do przeglądu
-Robert Stepuch |	2013-09-20 |	Nowy rozdział: Przykładowy skrypt PHP |	2.0 |	Do przeglądu
-Robert Stepuch |	2013-12-10 |	Nowy rozdział: Nowy webservice: CollectTouristObjectsCache |	3.0 |	Do przeglądu
-Grzegorz Kowalski |	2014-03-27 |	Dodatkowy przykład w PHP; Informacje o środowisku testowym; Zmiany kosmetyczne |	3.1a |	Do przeglądu
-Jacek Guz |	2014-04-09 |	Uszczegółowienie sposobu przekazywania danych województw, powiatów, gmin, miejscowości. |	4.0 |	Do przeglądu
-Grzegorz Kowalski |	2014-04-09 |	Uzupełnienie (Rozdział 8, Ad. 4) |	4.0a |	Do przeglądu
-Jacek Guz |	2014-07-21 |	Poprawienie opisu operacji getReport. |	5.0 |	Do przeglądu
-Jacek Guz |	2016-07-26 |	Nowy webservice: GetTouristObjectLanguages |	6.0 |	Do przeglądu
-Jacek Guz |	2016-09-13 |	Nowy webservice GetTouristObjectEvents |	7.0 |	Do przeglądu
-Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisami w PHP |	7.1 |	Do przeglądu
+Robert Stepuch |	2013-03-21 |	Utworzenie dokumentu |	1.0
+Robert Stepuch |	2013-09-20 |	Nowy rozdział: Przykładowy skrypt PHP |	2.0
+Robert Stepuch |	2013-12-10 |	Nowy rozdział: Nowy webservice: CollectTouristObjectsCache |	3.0
+Grzegorz Kowalski |	2014-03-27 |	Dodatkowy przykład w PHP; Informacje o środowisku testowym; Zmiany kosmetyczne |	3.1a
+Jacek Guz |	2014-04-09 |	Uszczegółowienie sposobu przekazywania danych województw, powiatów, gmin, miejscowości. |	4.0
+Grzegorz Kowalski |	2014-04-09 |	Uzupełnienie (Rozdział 8, Ad. 4) |	4.0a
+Jacek Guz |	2014-07-21 |	Poprawienie opisu operacji getReport. |	5.0
+Jacek Guz |	2016-07-26 |	Nowy webservice: GetTouristObjectLanguages |	6.0
+Jacek Guz |	2016-09-13 |	Nowy webservice GetTouristObjectEvents |	7.0
+Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisami w PHP |	7.1
+Grzegorz Kowalski | patrz: [historia commitów](https://github.com/pot-gov-pl/rit-dokumentacja/commits/master/webservices.md) po 2017-08 | Wiele małych poprawek i uściśleń | -
 
 ## Spis treści
 
