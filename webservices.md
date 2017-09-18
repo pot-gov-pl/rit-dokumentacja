@@ -62,7 +62,7 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 
 **Obiekt turystyczny** –  dokładnie jeden obiekt z dziedziny obiektów turystycznych (hotel, restauracja, atrakcja turystyczna, wydarzenie itp.).
 
-**Kanał dystrybucji** - umowna nazwa zestawu usług, technologii i konfiguracji, umiejscowionych w systemie RIT, pozwalająca na wymianę danych ( przekazanie i pobranie ), pomiędzy Systemem zewnętrznym a Systemem RIT.
+**Kanał dystrybucji** - umowna nazwa dla jednego lub wielu systemów zewnętrznych, które objęte są tymi samymi uprawnieniami, regułami i zbiorem danych; przykładowo kanał dystrybucji "województwo małopolskie" może obejmować serwisy internetowe, aplikacje mobilne i infokioski, które pobierają i/lub przekazują dane związane z województwem małopolskim; dostęp do systemu RIT wymaga uzyskania loginu, hasła i certyfikatu klienckiego do kanału dystrybucji.
 
 ## 2.	Udostępnione interfejsy w postaci webservice
 
@@ -119,7 +119,7 @@ Przeznaczanie elementów jest takie same w obydwu miejscach użycia GIVE/COLLECT
 
 ### Metryka
 
-Element 'metric' ma za zadanie przekazać do Systemu RIT informacje o żądającym. Jest wykorzystywana w każdym z WebServices.
+Element `metric` ma za zadanie przekazać do Systemu RIT informacje o żądającym. Jest wykorzystywana w każdym z WebServices.
 Przykład:
 
 ```xml
@@ -142,18 +142,18 @@ requestDate	|	Data i czas systemowy na maszynie z której jest uruchamiany webse
 
 ### Obiekt turystyczny
 
-Element 'touristObject' opisuje obiekt turystyczny. Jest wykorzystywany do przekazywania/pobierania danych do/z Systemu RIT. W zależności od kierunku przepływu danych, niektóre elementy są pomijane lub dodatkowo wykorzystywane do opisu obiektu turystycznego.
+Element `touristObject` opisuje obiekt turystyczny. Jest wykorzystywany do przekazywania/pobierania danych do/z Systemu RIT. W zależności od kierunku przepływu danych, niektóre elementy są pomijane lub dodatkowo wykorzystywane do opisu obiektu turystycznego.
 
 Opis jednego obiektu turystycznego składa się z głównych elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
-touristObjectIdentifierRIT	|	Element użyty w jednej z operacji GIVE przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie RIT. Aby element mógł być użyty System zewnętrzny musi uprzednio pobrać identyfikator obiektu z Systemu RIT i przechować go w własnej bazie danych. W operacji przekazania do Systemu RIT, element ten nie może współistnieć z elementem: touristObjectIdentifierSZ.<br><br>Element użyty w jednej z operacji COLLECT przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie RIT. W operacji pobrania z Systemu RIT element ten może współistnieć z elementem: touristObjectIdentifierSZ.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT.	|	GIVE/COLLECT	|	Element	|	0..1
-touristObjectIdentifierSZ	|	Element użyty w jednej z operacji GIVE przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie zewnętrznym.  W operacji przekazania do Systemu RIT, element ten nie może współistnieć z elementem: touristObjectIdentifierRIT. W operacji GIVE element jest obowiązkowy.<br><br>Element użyty w jednej z operacji COLLECT przekazuje informację o identyfikatorach obiektu, w innych systemach zewnętrznych, z których została pobrane dane opisujące obiekt. W operacji pobrania z Systemu RIT element ten może współistnieć z elementem: touristObjectIdentifierSZ. W operacji COLLECT element jest opcjonalny.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	|	GIVE/COLLECT	|	Element	|	0..unbounded
+touristObjectIdentifierRIT	|	Element użyty w jednej z operacji GIVE przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie RIT. Aby element mógł być użyty System zewnętrzny musi uprzednio pobrać identyfikator obiektu z Systemu RIT i przechować go w własnej bazie danych. W operacji przekazania do Systemu RIT, element ten nie może współistnieć z elementem `touristObjectIdentifierSZ`.<br><br>Element użyty w jednej z operacji COLLECT przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie RIT. W operacji pobrania z Systemu RIT element ten może współistnieć z elementem `touristObjectIdentifierSZ`.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierRIT*.	|	GIVE/COLLECT	|	Element	|	0..1
+touristObjectIdentifierSZ	|	Element użyty w jednej z operacji GIVE przekazuje informację o identyfikatorze obiektu, który jednoznacznie identyfikuje obiekt w Systemie zewnętrznym.  W operacji przekazania do Systemu RIT, element ten nie może współistnieć z elementem `touristObjectIdentifierRIT`. W operacji GIVE element jest obowiązkowy.<br><br>Element użyty w jednej z operacji COLLECT przekazuje informację o identyfikatorach obiektu, w innych systemach zewnętrznych, z których została pobrane dane opisujące obiekt. W operacji pobrania z Systemu RIT element ten może współistnieć z elementem `touristObjectIdentifierRIT`. W operacji COLLECT element jest opcjonalny.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierSZ*.	|	GIVE/COLLECT	|	Element	|	0..unbounded
 lastReleasedInRIT	|	Data i czas ostatniej modyfikacji w Systemie RIT. 	|	COLLECT	|	date	|	0..1
-categories	|	Lista kategorii do której przypisany jest obiekt. Kategorie są zgodne z słownikiem kategorii w Systemie RIT, do pobrania za pomocą webservice: MetadataOfRIT.wsdl.<br><br>Opis podelementów w tabelce: categories.	|	GIVE/COLLECT	|	Element	|	1..1
-attributes	|	Lista atrybutów które posiada obiekt. Atrybuty są zgodne z słownikiem atrybutów w Systemie RIT, do pobrania za pomocą webservice: MetadataOfRIT.wsdl.<br><br>Opis podelementów w tabelce: attributes.	|	GIVE/COLLECT	|	Element	|	1..1
-binaryDocuments	|	Lista dokumentów jakie są skojarzone z obiektem turystycznym.<br><br>Opis podelementów w tabelce: binaryDocuments.	|	GIVE/COLLECT	|	Element	|	0..1
+categories	|	Lista kategorii do której przypisany jest obiekt. Kategorie są zgodne z słownikiem kategorii w Systemie RIT, do pobrania za pomocą webservice: MetadataOfRIT.wsdl.<br><br>Opis podelementów w tabelce: *categories*.	|	GIVE/COLLECT	|	Element	|	1..1
+attributes	|	Lista atrybutów które posiada obiekt. Atrybuty są zgodne z słownikiem atrybutów w Systemie RIT, do pobrania za pomocą webservice `MetadataOfRIT.wsdl`.<br><br>Opis podelementów w tabelce: *attributes*.	|	GIVE/COLLECT	|	Element	|	1..1
+binaryDocuments	|	Lista dokumentów jakie są skojarzone z obiektem turystycznym.<br><br>Opis podelementów w tabelce: *binaryDocuments*.	|	GIVE/COLLECT	|	Element	|	0..1
 
 Element: **touristObjectIdentifierRIT**
 
@@ -195,7 +195,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
-identifierType	|	Typ używanego identyfikatora.<br>-	typ I1 - sztuczny identyfikator bazodanowy ( artificialIdentifier )<br>-	typ I2 - nazwa tabeli + sztuczny identyfikator bazodanowy  ( databaseTable + artificialIdentifier )<br>-	typ I3 – konkatenacja wybranych ( niezmiennych ) pól tekstowych obiektu ( concatenationOfField )	|	GIVE/COLLECT	|	enumeration: [I1,I2,I3]	|	1..1
+identifierType	|	Typ używanego identyfikatora.<br>-	typ `I1` - sztuczny identyfikator bazodanowy ( artificialIdentifier )<br>-	typ `I2` - nazwa tabeli + sztuczny identyfikator bazodanowy  ( databaseTable + artificialIdentifier )<br>-	typ `I3` – konkatenacja wybranych ( niezmiennych ) pól tekstowych obiektu ( concatenationOfField )	|	GIVE/COLLECT	|	enumeration: [I1,I2,I3]	|	1..1
 distributionChannel	|	Kanał dystrybucji z którego pochodzi danych obiekt:<br>- name – ciąg znaków będący nazwą kanału<br>- code – kod kanału, jednoznacznie identyfikujący kanał, pod jaką jest on zapisany w Systemie RIT.	|	COLLECT	|	Element	|	0..1
 artificialIdentifier	|	Sztuczny identyfikator obiektu w Systemie zewnętrznym. Element obowiązkowy dla identifierType=I1 i identifierType=I2.	|	GIVE/COLLECT	|	string	|	0..1
 databaseTable	|	Nazwa tabeli bazodanowej w której przechowywany jest sztuczny identyfikator. Element obowiązkowy dla identifierType=I2.	|	GIVE/COLLECT	|	string	|	0..1
@@ -226,9 +226,9 @@ Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 category	|	Element opisujący dokładnie jedną kategorię.	| 	GIVE/COLLECT	|	Element	|	1..unbouded
 code	|	Kod kategorii do której przypisany jest obiekt.	|	GIVE/COLLECT	|	string	|	1..1
 name	|	Nazwa kategorii w Systemie RIT	|	COLLECT	|	string	|	0..1
-description	|	Opis kategorii w systemie RIT. Używane tylko w interfejsie MetadataOfRIT.wsdl.	|	--	|	string	|	0..1
-attributeCodes	|	Lista kodów atrybutów używana do opisania kategorii. Używane tylko w interfejsie MetadataOfRIT.wsdl.	|	--	|	Element	|	0..unbounded
-attributeCode	|	Kod atrybutu używany do opisania kategorii. Używane tylko w interfejsie MetadataOfRIT.wsdl.	|	--	|	string	|	1..unbounded
+description	|	Opis kategorii w systemie RIT. Używane tylko w interfejsie `MetadataOfRIT.wsdl`.	|	--	|	string	|	0..1
+attributeCodes	|	Lista kodów atrybutów używana do opisania kategorii. Używane tylko w interfejsie `MetadataOfRIT.wsdl`.	|	--	|	Element	|	0..unbounded
+attributeCode	|	Kod atrybutu używany do opisania kategorii. Używane tylko w interfejsie `MetadataOfRIT.wsdl`.	|	--	|	string	|	1..unbounded
 
 Element: **attributes**
 
@@ -293,8 +293,8 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
-compAttrVals->code	|	Kod atrybutu który opisuje obiekt. Kody atrybutów są zgodne z słownikiem atrybutów w Systemie RIT, do pobrania za pomocą webservice: MetadataOfRIT.wsdl.<br><br>Atrybut 'code' elementu 'compAttrVals' jest wymagany.	|	GIVE	|	string	|	1..1
-compAttrVals->attrVals	|	Element pozwalający na opisanie listy wartości atrybutów.  Każda lista wartości atrybutów ma podany język w którym są zapisane dane. Dla jednego elementu 'attribute', może istnieć wiele 'attrVals' ale każdy musi mieć inny język.<br><br>Opis podelementów w tabelce: attrVals.	|	GIVE	|	element	|	0..unbounded
+compAttrVals->code	|	Kod atrybutu który opisuje obiekt. Kody atrybutów są zgodne z słownikiem atrybutów w Systemie RIT, do pobrania za pomocą webservice: MetadataOfRIT.wsdl.<br><br>Atrybut `code` elementu `compAttrVals` jest wymagany.	|	GIVE	|	string	|	1..1
+compAttrVals->attrVals	|	Element pozwalający na opisanie listy wartości atrybutów.  Każda lista wartości atrybutów ma podany język w którym są zapisane dane. Dla jednego elementu `attribute`, może istnieć wiele `attrVals` ale każdy musi mieć inny język.<br><br>Opis podelementów w tabelce: *attrVals*.	|	GIVE	|	element	|	0..unbounded
 
 Element: **binaryDocuments**
 
@@ -336,8 +336,8 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 documentURL	|	Element do przekazania dokumentu binarnego dostępnego jako adres URL.<br><br>Opis podelementów w tabelce: documentURL.	|	GIVE/COLLECT	|	element	|	0..unbounded
-documentFile	|	Element do przekazania dokumentu binarnego dostępnego jako plik umieszczony na serwerze FTP w POT.<br><br>Opis podelementów w tabelce: documentFile.	|	GIVE	|	element	|	0..unbounded
-documentBase64	|	Element do przekazania dokumentu binarnego dostępnego jako strumień zakodowany w Base64.<br><br>Opis podelementów w tabelce: documentBase64.	|	GIVE	|	element	|	0..unbounded
+documentFile	|	Element do przekazania dokumentu binarnego dostępnego jako plik umieszczony na serwerze FTP w POT.<br><br>Opis podelementów w tabelce: *documentFile*.	|	GIVE	|	element	|	0..unbounded
+documentBase64	|	Element do przekazania dokumentu binarnego dostępnego jako strumień zakodowany w Base64.<br><br>Opis podelementów w tabelce: *documentBase64*.	|	GIVE	|	element	|	0..unbounded
 
 Element: **documentURL**
 
@@ -385,7 +385,7 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 fileName | Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br><br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.	|	GIVE/COLLECT	|	string	|	1..1
-fileType	|	Typ pliku (rozszerzenie pliku lub ContentType dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
+fileType	|	Typ pliku (rozszerzenie pliku lub `ContentType` dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
 relativePathToDirectory	|	Relatywna ścieżka do katalogu na serwerze FTP w POT, w którym został umieszczony plik.	| 	GIVE/COLLECT	|	string	|	1..1
 certificate	|	Element opisuje pozwolenie na użytkowanie pliku udzielone przez POT / udostępniającego plik.	|	COLLECT	|	element	|	0..1
 certificate->validTo	|	Data do  pozwolenia na użytkowanie pliku.	|	COLLECT	|	date	|	1..1
@@ -419,7 +419,7 @@ certificate ->distributionChannelOwner	|	Źródłowy kanał dystrybucji z które
 
 ### Raport z wykonania
 
-Element 'report' zawiera w sobie tylko elementy ' reportForObject' który zawierają raport/informację o statusie i błędach jakie stwierdzono w czasie przetwarzania obiektu.
+Element `report` zawiera w sobie tylko elementy `reportForObject` który zawierają raport/informację o statusie i błędach jakie stwierdzono w czasie przetwarzania obiektu.
 
 Przykład:
 ```xml
@@ -449,7 +449,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
-report	|	Element grupujący elementy 'reportForObject'.	|	GIVE	|	element	| 1..1
+report	|	Element grupujący elementy `reportForObject`.	|	GIVE	|	element	| 1..1
 reportForObject	|	Element zawierający raport tylko dla jednego obiektu turystycznego.	|	GIVE	|	element	|	1..unbounded
 identifierRIT	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacji przekazania danych do RIT, są to skopiowane dane identyfikacyjne, podane przy wywołaniu operacji z GiveTouristObjects.wsdl.<br><br>W operacji przekazania do Systemu RIT element ten nie może współistnieć z elementem: identifierSZ i positionInXML.<br><br>Opis podelementów w tabelce: touristObjectIdentifierRIT.	|	GIVE	|	element	|	0..1
 identifierSZ	|	Element opisuje obiekt którego dotyczy dany raport. Dla operacji przekazania danych do RIT, są to skopiowane dane identyfikacyjne, podane przy wywołaniu operacji z GiveTouristObjects.wsdl.<br><br>W operacji przekazania do Systemu RIT element ten nie może współistnieć z elementem: identifierRIT i positionInXML.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	|	GIVE	|	element	|	0..1
@@ -464,9 +464,9 @@ reportLine->textLine	|	Treść linijki raportu.	|	GIVE	|	string	|	1..1
 
 ### Operacja searchTouristObjects
 
-Element 'searchCondition' zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
+Element `searchCondition` zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
 
-Element searchCondition w żądaniu (request) ma następującą postać:
+Element `searchCondition` w żądaniu (request) ma następującą postać:
 
 ```xml
  <searchCondition>
@@ -511,7 +511,7 @@ lastModifiedRange->dateFrom	|	Dolny kraniec ograniczenia w zakresie dat.	|	date	
 lastModifiedRange->dateTo	|	Górny kraniec ograniczenia w zakresie dat.	|	date	|	0..1
 
 
-Element 'CollectTouristObjectResponse' w odpowiedzi (response) ma następującą postać:
+Element `CollectTouristObjectResponse` w odpowiedzi (response) ma następującą postać:
 
 ```xml
    <CollectTouristObjectResponse>
@@ -527,7 +527,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-status	|	Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	|	0..1
+status	|	Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie `info`.	| string	|	0..1
 info	|	Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.		| string	|	0..1
 touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	|	|
 
@@ -535,13 +535,13 @@ touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis element
 
 ### Operacja searchTouristObjectsInCache
 
-Element 'searchCondition' zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
+Element `searchCondition` zawiera kryteria po jakich mają być przeszukiwane obiekty w bazie danych Systemu RIT.  **Wyszukiwanie odbywa się tylko i wyłącznie wśród obiektów przypisanych w RIT do danego kanały dystrybucji.**
 
-Dane są pobierane z cache, utworzonego w systemie RIT. Cache jest uaktualniany codziennie, w godzinach nocnych. Zawiera on wstępnie przygotowane dane o wszystkich obiektach dostępnych w systemie RIT. Zadaniem operacji jest  udostępnienie danych o obiektach, w znacznie krótszym czasie niż operacja 'searchTouristObject' w webservice 'CollectTouristObjects'. Operacja posiada 2 zoptymalizowane funkcjonalności:
--	wybór wszystkich obiektów dostępnych dla danego kanału dystrybucji
--	wybór obiektów zmodyfikowanych w określonym przedziale czasu
+Dane są pobierane z cache, utworzonego w systemie RIT. Cache jest uaktualniany codziennie, w godzinach nocnych. Zawiera on wstępnie przygotowane dane o wszystkich obiektach dostępnych w systemie RIT. Zadaniem operacji jest  udostępnienie danych o obiektach, w znacznie krótszym czasie niż operacja `searchTouristObject` w webservice `CollectTouristObjects`. Operacja posiada 2 zoptymalizowane funkcjonalności:
+-	wybór wszystkich obiektów dostępnych dla danego kanału dystrybucji;
+-	wybór obiektów zmodyfikowanych w określonym przedziale czasu.
 
-Element searchConditionInCache w żądaniu ( request ) ma następującą postać:
+Element `searchConditionInCache` w żądaniu ( request ) ma następującą postać:
 
 ```xml
  <searchCondition>
@@ -564,7 +564,7 @@ lastModifiedRange		| Element pozwala na podanie zakresu dat  lub jednego z krań
 lastModifiedRange->dateFrom	| 	Dolny kraniec ograniczenia w zakresie dat.	| 	date	| 	0..1
 lastModifiedRange->dateTo	| 	Górny kraniec ograniczenia w zakresie dat.	| 	date	| 	0..1
 
-Element 'CollectTouristObjectCacheResponse' w odpowiedzi ( response ) ma następującą postać:
+Element `CollectTouristObjectCacheResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
    <CollectTouristObjectResponse>
@@ -590,7 +590,7 @@ touristObject	|	Elementy opisujące znalezione obiekty turystyczne. Opis element
 
 Operacja **addModifyObject** jest przeznaczona do przekazywania danych jednego obiektu turystycznego, do systemu RIT. W czasie wywołania operacji, przekazywany obiekt jest przetwarzany w Systemie RIT i dopiero po przetworzeniu zwracany jest wynik operacji.   Operacja w wyniku działania zwraca raport opisujący zawierający status wykonania i ewentualne błędy stwierdzone podczas wykonania.
 
-Element AddModifyObjectRequest w żądaniu ( request ) ma następującą postać:
+Element `AddModifyObjectRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
 <AddModifyObjectRequest>
@@ -611,7 +611,7 @@ metric		| Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejsze
 touristObject	| 	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: Wspólne elementy → Obiekt turystyczny niniejszego dokumentu.	| element	| 	1..1
 
 
-Element AddModifyObjectResponse w odpowiedzi ( response ) ma następującą postać:
+Element `AddModifyObjectResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <AddModifyObjectResponse>
@@ -631,7 +631,7 @@ report		| Opis elementu w rozdziale: **Wspólne elementy → Raport z wykonania*
 
 Operacja **addModifyObjects** jest przeznaczona do przekazywania danych więcej niż jednego obiektu turystycznego, do systemu RIT. W czasie wywołania operacji, przekazywany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
 
-Element AddModifyObjectsRequest w żądaniu ( request ) ma następującą postać:
+Element `AddModifyObjectsRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
 <AddModifyObjectRequest>
@@ -652,7 +652,7 @@ metric		| Opis elementu w rozdziale: **Wspólne elementy → Metryka** niniejsze
 touristObject	| 	Elementy opisujące znalezione obiekty turystyczne. Opis elementu w rozdziale: **Wspólne elementy → Obiekt turystyczny** niniejszego dokumentu.	| 	element	| 	1..unbounded
 
 
-Element AddModifyObjectsResponse w odpowiedzi ( response ) ma następującą postać:
+Element `AddModifyObjectsResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <AddModifyObjectsResponse>
@@ -668,9 +668,11 @@ transactionIdentifier		| Unikalny identyfikator żądania. Wartość wymagana do
 
 ### Operacja delObject
 
-Operacja **delObject** jest przeznaczona do usuwania danych jednego obiektu turystycznego, z systemu RIT. Obiekt taki musi być uprzednio choć raz przekazany lub pobrany do/z Systemu RIT, za pomocą kanału dystrybucji. Operacja w wyniku działania zwraca raport opisujący zawierający status wykonania i ewentualne błędy stwierdzone podczas wykonania.
+Operacja **delObject** jest przeznaczona do usuwania danych jednego obiektu turystycznego, z systemu RIT. Obecnie obiekt taki **musi pochodzić z kanału dystrybucji, który wnioskuje o usunięcie** - w przyszłości to ograniczenie może zostać zniesione. Operacja w wyniku działania zwraca raport opisujący zawierający status wykonania i ewentualne błędy stwierdzone podczas wykonania.
 
-Element DelObjectRequest w żądaniu ( request ) ma następującą postać:
+Poprawne wykonanie operacji nie musi skutkować natychmiastowym usunięciem obiektu. Możliwe, że po stronie systemu RIT zostanie wygenerowane zapytanie do żywej osoby (redaktora/moderatora) o zatwierdzenie usunięcia.
+
+Element `DelObjectRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
 <DelObjectRequest>
@@ -695,7 +697,7 @@ identifierRIT		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element
 identifierSZ		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ. 	| element	| 	0..1
 
 
-Element DelObjectResponse w odpowiedzi ( response ) ma następującą postać:
+Element `DelObjectResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <DelObjectResponse>
@@ -714,9 +716,9 @@ report	| 	Opis elementu w rozdziale: **Wspólne elementy → Raport** z wykonani
 
 ### Operacja delObjects
 
-Operacja delObjects jest przeznaczona do usuwania danych wielu obiektów turystycznych, z systemu RIT. Obiekty takie muszą być uprzednio choć raz przekazane lub pobrane do/z Systemu RIT, za pomocą kanału dystrybucji. W czasie wywołania operacji, usuwany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane, po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
+Operacja delObjects jest przeznaczona do usuwania danych wielu obiektów turystycznych, z systemu RIT. Obiekty takie **muszą pochodzić z kanału dystrybucji, który wnioskuje o ich usunięcie** - w przyszłości to ograniczenie może zostać zniesione. W czasie wywołania operacji, usuwany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane, po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
 
-Element DelObjectsRequest w żądaniu ( request ) ma następującą postać:
+Element `DelObjectsRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
 <DelObjectsRequest>
@@ -741,7 +743,7 @@ identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element
 identifierSZ		| Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: touristObjectIdentifierSZ.	| element	| 	0..unbounded
 
 
-Element DelObjectsResponse w odpowiedzi ( response ) ma następującą postać:
+Element `DelObjectsResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <DelObjectsResponse>
@@ -758,8 +760,9 @@ transactionIdentifier		| Unikalny identyfikator żądania. Wartość wymagana do
 
 ### Operacja getReport
 
-Operacja **delObjects** jest przeznaczona do usuwania danych wielu obiektów turystycznych, z systemu RIT. Obiekty takie muszą być uprzednio choć raz przekazane lub pobrane do/z Systemu RIT, za pomocą kanału dystrybucji. W czasie wywołania operacji, usuwany obiekt nie jest przetwarzany w Systemie RIT, ale jest rejestrowany do późniejszego przetworzenia. Obiekty przekazane za pomocą tej operacji są  przetwarzane, po odesłaniu odpowiedzi do klienta wywołującego tą operację.  Operacja w wyniku działania zwraca identyfikator transakcji, pod którym zostało zarejestrowane to żądanie.
-Element GetReportRequest w żądaniu ( request ) ma następującą postać:
+Operacja **getReport** jest przeznaczona do pobrania raportu z wykonania operacji addModifyObjects i delObjects.
+
+Element `GetReportRequest` w żądaniu (request) ma następującą postać:
 
 ```xml
 <GetReportRequest>
@@ -777,7 +780,7 @@ Element |	Przeznaczenie |	Typ XML |	Krotność
 metric	| Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| element	| 1..1
 transactionIdentifier	| Unikalny identyfikator żądania. Wartość uzyskana z wyniku działania operacji addModifyObjects, delObjects.	| element	| 1..1
 
-Element GetReportResponse w odpowiedzi ( response ) ma następującą postać:
+Element `GetReportResponse` w odpowiedzi (response) ma następującą postać:
 
 ```xml
 <GetReportResponse>
@@ -793,7 +796,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-status		| Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie 'info'.	| string	| 1..1
+status		| Status odpowiedzi:<br>- OK – wyszukiwanie przebiegło bez błędów<br>- ERROR – podczas wyszukiwania pojawił się błąd wynikający z nieprawidłowo podanych parametrów wyszukania. Więcej informacji w elemencie `info`.	| string	| 1..1
 info	| Element zawiera informację o ilości znalezionych rekordów lub treść błędu wynikającego z nieprawidłowo podanych parametrów wyszukania.	| string	| 1..1
 report	| Opis elementu w rozdziale: **Wspólne elementy → Raport z wykonania** niniejszego dokumentu.	| element	| 0..unbounded
 
@@ -804,7 +807,7 @@ report	| Opis elementu w rozdziale: **Wspólne elementy → Raport z wykonania**
 
 Operacja pozwala na pobranie bazy merytorycznej Systemu RIT.
 
-Element  MetadataRequest w żądaniu ( request ):
+Element `MetadataRequest` w żądaniu ( request ):
 
 ```xml
  <MetadataRequest>
@@ -822,7 +825,7 @@ Element |	Przeznaczenie |	Typ XML |	Krotność
 language	| Język w którym zostanie udostępniona zawartość bazy merytorycznej Systemu RIT.	| string	| 1..1
 metric	| Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| element	| 1..1
 
-Element  MetadataResponse w odpowiedzi ( response ):
+Element `MetadataResponse` w odpowiedzi ( response ):
 
 ```xml
   <MetadataResponse xmlns:ns3="http://www.pot.gov.pl/rit/integration/commonElements/RITException" xmlns:ns2="http://www.pot.gov.pl/rit/integration/commonElements/Metric" xmlns="http://www.pot.gov.pl/rit/integration/MetadataOfRIT">
@@ -904,7 +907,7 @@ value	| 	Pozycje słownika.		| string	| 	0..unbounded
 
 Operacja pozwala na pobranie wersji językowych dla podanego obiektu.
 
-Element GetTouristObjectLanguagesRequest  w żądaniu ( request ) ma następującą postać:
+Element `GetTouristObjectLanguagesRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
  <GetTouristObjectLanguagesRequest>
@@ -928,11 +931,11 @@ Opis elementów:
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
 metric	| 	Opis elementu w rozdziale: Wspólne elementy → Metryka niniejszego dokumentu.	| 	string	| 	1..1
-identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierSZ.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierRIT*.	| boolean	| 0..1
-identifierSZ	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem: identifierRIT.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierSZ*.	| element	| 0..1
+identifierRIT	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem `identifierSZ`.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierRIT*.	| boolean	| 0..1
+identifierSZ	| 	Element opisuje dokładnie jeden obiekt w Systemie RIT. Element nie może współistnieć wraz z elementem `identifierRIT`.<br><br>Opis podelementów w tabelce: *touristObjectIdentifierSZ*.	| element	| 0..1
 
 
-Element GetTouristObjectLanguagesResponse w odpowiedzi ( response ) ma następującą postać:
+Element `GetTouristObjectLanguagesResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <GetTouristObjectLanguagesResponse>
@@ -944,7 +947,7 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-language		| Kod wersji językowej np.: pl-PL, de-DE itp.	| 	string	| 1..n
+language		| Kod wersji językowej np.: `pl-PL`, `de-DE` itp.	| 	string	| 1..n
 
 
 ## 9.	Operacje w GetTouristObjectEvents
@@ -952,10 +955,10 @@ language		| Kod wersji językowej np.: pl-PL, de-DE itp.	| 	string	| 1..n
 ### Operacja getEvents
 
 Operacja pozwala na pobranie zdarzeń dotyczących obiektów w danym okresie. Obsługiwane zdarzenia:
--	TO_ARCHIVE – przeniesienie do archiwum
--	MERGE – scalenie obiektów
+-	`TO_ARCHIVE` – przeniesienie do archiwum
+-	`MERGE` – scalenie obiektów
 
-Element GetTouristObjectEventsRequest w żądaniu ( request ) ma następującą postać:
+Element `GetTouristObjectEventsRequest` w żądaniu ( request ) ma następującą postać:
 
 ```xml
  <GetTouristObjectEventsRequest>
@@ -978,7 +981,7 @@ dataFrom		|Data początkowa  zdarzeń.		|date		|1..1
 dataTo		|Data końcowa zdarzeń.		|date		|1..1
 
 
-Element GetTouristObjectEventsResponse w odpowiedzi ( response ) ma następującą postać:
+Element `GetTouristObjectEventsResponse` w odpowiedzi ( response ) ma następującą postać:
 
 ```xml
 <GetTouristObjectEventsResponse>
@@ -1001,39 +1004,35 @@ Opis elementów:
 
 Element |	Przeznaczenie |	Typ XML |	Krotność
 ---	| ---	| ---	| ---
-eventType	|	Typ zdarzenia. Wartości: TO_ARCHIVE, MERGE.	|	string		|1..1
+eventType	|	Typ zdarzenia. Wartości: `TO_ARCHIVE`, `MERGE`.	|	string		|1..1
 eventDate	|	Data i czas zdarzenia.	|	dateTime		|1..1
 objectId	|	Id obiektu, którego dotyczy zdarzenie.	|	string	|	1..1
-newObejctId		|Id obiektu po scaleniu obiektu. Występuje tylko dla zdarzenia MERGE.	|	string		|0..1
+newObejctId	| Id obiektu po scaleniu obiektu. Występuje tylko dla zdarzenia `MERGE`.	|	string		|0..1
 
 
 ## 10.	Atrybuty, kategorie i języki narodowe w RIT
 
 Niniejszy rozdział zawiera dodatkowe informacje o sposobie przetwarzania żądań w Systemie RIT.
 
-W niniejszym rozdziale, słowo  'dokument' oznacza dokument 'Struktura danych RIT v.X.xlsx' zawierającego opis bazy merytorycznej systemu RIT (gdzie X oznacza numer wersji dokumentu).
-
 W Systemie RIT, opis obiektu turystycznego jest złożony z:
-1.	listy kategorii do której przypisany jest obiekt turystycznych
-2.	listy atrybutów które posiada obiekt turystycznych
-3.	wersji językowej w której przygotowany został opis obiektu
+1.	listy kategorii do której przypisany jest obiekt turystycznych;
+2.	listy atrybutów które posiada obiekt turystycznych;
+3.	wersji językowej w której przygotowany został opis obiektu;
 4.	innych pomocniczych atrybutów, utworzonych na potrzeby systemu RIT, do organizacji przetwarzania obiektu turystycznego.
 
 ### Ad 1) Kategorie
 
 Każdy obiekt w systemie RIT, jest przypisany do co najmniej jednej kategorii. Każda kategoria składa się z listy atrybutów które stanowią opis tej kategorii. Lista atrybutów opisujących obiekt, jest uwarunkowana kategorią/-ami do której należy dany obiekt turystyczny.
 
-Kategorie w systemie RIT, mają strukturę hierarchiczną. Na górze struktury znajduje się kategoria ROOT, z której niższe kategorie dziedziczą atrybuty. Hierarchia kategorii może ulegać zmianie,  gdyż jest dostępna do edycji dla użytkownika systemu RIT. Bieżąca struktura kategorii nie jest udostępniana przez webservice MetaDataOfRIT, gdyż do opisu obiektu turystycznego w RIT, hierarchia kategorii nie ma istotnego znaczenia.
+Kategorie w systemie RIT, mają strukturę hierarchiczną. Na górze struktury znajduje się kategoria ROOT, z której niższe kategorie dziedziczą atrybuty. Hierarchia kategorii może ulegać zmianie,  gdyż jest dostępna do edycji dla użytkownika systemu RIT. Bieżąca struktura kategorii jest udostępniana przez webservice MetaDataOfRIT.
 
-Aktualny opis hierarchii jest zawarty w dokumencie, zakładka: Kategorie.
-
-W czasie przekazywania danych do systemu RIT, każdy obiekt turystyczny musi mieć przydzieloną kategorię. Dobierać należy kategorie z poziomu 3 lub poziomu 4 ( patrz dokument ). Kategorie z poziomów 2,1,0 zostaną automatycznie przypisane do obiektu i nie ma potrzeby ich podawania w elemencie 'touristObjects/categories'.
+W czasie przekazywania danych do systemu RIT, każdy obiekt turystyczny musi mieć przydzieloną kategorię. Dobierać należy kategorie będące liśćmi drzewa kategorii. Kategorie będące węzłami (czyli kategorie pośrednie między ROOT a liśćmi) zostaną automatycznie przypisane do obiektu i nie ma potrzeby ich podawania w elemencie 'touristObjects/categories'.
 
 W czasie przekazywania danych do systemu RIT, mogą się zdarzyć następujące przypadki:
--	kategoria obiektu turystycznego w systemie źródłowym nie istnieje lub nie ma odpowiednika w systemie RIT – w takiej sytuacji należy wybrać najbardziej zbliżoną kategorię spośród istniejących w systemie RIT.
--	kategoria obiektu turystycznego, w systemie źródłowym istnieje lecz ilość atrybutów opisujących obiekt w systemie źródłowym i docelowym jest nierówna – należy przekazać wszystkie atrybuty obiektu turystycznego zgromadzone w systemie źródłowym
+-	kategoria obiektu turystycznego w systemie źródłowym nie istnieje lub nie ma odpowiednika w systemie RIT – w takiej sytuacji należy wybrać najbardziej zbliżoną kategorię spośród istniejących w systemie RIT;
+-	kategoria obiektu turystycznego, w systemie źródłowym istnieje lecz ilość atrybutów opisujących obiekt w systemie źródłowym i docelowym jest nierówna – należy przekazać wszystkie atrybuty obiektu turystycznego zgromadzone w systemie źródłowym.
 
-W czasie pobierania danych do systemu RIT, dla każdego obiektu turystycznego zostaną zwrócone wszystkie kategorie do których przypisany jest obiekt ( niezależnie od poziomu z którego pochodzi kategoria).  
+W czasie pobierania danych do systemu RIT, dla każdego obiektu turystycznego zostaną zwrócone wszystkie kategorie do których przypisany jest obiekt ( niezależnie od poziomu drzewa z którego pochodzi kategoria).  
 
 Przykład:
 
@@ -1064,19 +1063,17 @@ Każdy obiekt w systemie RIT,  posiada jeden lub więcej atrybutów. Lista atryb
 
 W czasie przekazywania lub pobierania danych do/z systemu RIT, wartości wszystkich atrybutów powinny być przekazane/będą udostępniane jako ciąg znaków. Weryfikacja zgodności danej wartości z typem danych, opisujących danych atrybut, będzie wykonana na etapie weryfikacji poprawności obiektu ( patrz podrozdział: Etapy przetwarzania obiektów ).
 
-Aktualny opis atrybutów jest zawarty w dokumencie, zakładka: Atrybuty.
-
 Przypisanie atrybutów do kategorii, jest zawarte w dokumencie, zakładka: Atrybuty kategorii.
 
 Ze względu na typ wartości, atrybuty w systemie RIT, dzielą się na:
--	typy prymitywne ( SHORT_TEXT, LONG_TEXT, NUMBER, BOOLEAN, DATE )
--	typ COMPLEX – jest to atrybut złożony, który sam nie przechowuje wartości atrybutu, a tylko grupuje inne atrybuty
--	typy MULTIPLY_LIST, SINGLE_LIST – jest to atrybut, którego wartościami mogą być tylko pozycje z słownika przypisanego do tego atrybutu.
+-	typy prymitywne ( `SHORT_TEXT`, `LONG_TEXT`, `NUMBER`, `BOOLEAN`, `DATE` )
+-	typ `COMPLEX` – jest to atrybut złożony, który sam nie przechowuje wartości atrybutu, a tylko grupuje inne atrybuty
+-	typy `MULTIPLY_LIST`, `SINGLE_LIST` – jest to atrybut, którego wartościami mogą być tylko pozycje z słownika przypisanego do tego atrybutu.
 
 Podczas przekazywania danych do systemu RIT, należy zapewnić:
 -	dla typów prymitywnych - zgodność wartości z typem
--	dla typu COMPLEX – użycie odpowiedniego zestawu atrybutów zgrupowanych w ramach tego typu złożonego. Uwaga: używanie atrybutów typu COMPLEX, nie jest obowiązkowe.
--	dla typu MULTIPLY_LIST, SINGLE_LIST  – użycie pozycji istniejącej w słowniku przypisanym do danego atrybutu. W przypadku gdy istniejąca pozycja nie istnieje w słowniku systemu RIT, to również należy ją przekazać. W przypadku atrybutów: województwo, powiat, gmina, miejscowość należy przekazać nazwę np. Mazowieckie, Warszawa itp. Dopuszcza się żeby zamiast nazwy podawać ID województwa, ID powiatu, ID gminy, ID miejscowości (patrz opis elementu AttrVals).
+-	dla typu `COMPLEX` – użycie odpowiedniego zestawu atrybutów zgrupowanych w ramach tego typu złożonego. Uwaga: używanie atrybutów typu COMPLEX, nie jest obowiązkowe.
+-	dla typu `MULTIPLY_LIST`, `SINGLE_LIST`  – użycie pozycji istniejącej w słowniku przypisanym do danego atrybutu. W przypadku gdy istniejąca pozycja nie istnieje w słowniku systemu RIT, to również należy ją przekazać. W przypadku atrybutów: województwo, powiat, gmina, miejscowość należy przekazać nazwę np. Mazowieckie, Warszawa itp. Dopuszcza się żeby zamiast nazwy podawać ID województwa, ID powiatu, ID gminy, ID miejscowości (patrz opis elementu AttrVals).
 
 W czasie przekazywania danych do systemu RIT, mogą się zdarzyć następujące przypadki:
 -	atrybut obiektu turystycznego, w systemie źródłowym, nie istnieje w systemie RIT – w takiej sytuacji należy pominąć przekazywanie takiego atrybutu,
@@ -1085,8 +1082,8 @@ W czasie przekazywania danych do systemu RIT, mogą się zdarzyć następujące 
 
 W czasie pobierania danych z systemu RIT, udostępniane są wszystkie atrybuty przypisane do obiektu turystycznego:
 -	dla typów prymitywnych - zgodne z typem
--	dla typu COMPLEX – aktualnie nie używane.
--	dla typu MULTIPLY_LIST, SINGLE_LIST  – wartość pozycji z słownika w systemie RIT.
+-	dla typu `COMPLEX` – aktualnie nie używane.
+-	dla typu `MULTIPLY_LIST`, `SINGLE_LIST`  – wartość pozycji z słownika w systemie RIT.
 
 Przykład definicji atrybutu:
 
@@ -1117,17 +1114,17 @@ Przykład definicji atrybutu:
 
 ### Ad 3) Wersja językowa
 
-Każdy obiekt w systemie RIT,  posiada jedną lub więcej wersji językowych.  Wersja językowa to zestaw wartości atrybutów, które są zapisane w jednym z języków narodowych. Każda z wersji językowych jest przetwarzana oddzielnie w systemie RIT.  Wpływa to na sposób wymiany danych z systemem RIT.
+Każdy obiekt w systemie RIT, posiada jedną lub więcej wersji językowych. Wersja językowa to zestaw wartości atrybutów, które są zapisane w jednym z języków narodowych. Każda z wersji językowych jest przetwarzana oddzielnie w systemie RIT. Wpływa to na sposób wymiany danych z systemem RIT.
 
 Podczas przekazywania danych do systemu RIT, dla każdego z atrybutów należy podać, w jakiej wersji językowej jest wartość danego atrybutu:
--	locale dla języka narodowego ( 'pl-PL', 'en-GB' itp. ) - wartość atrybutu jest zapisana dla danego języka narodowego. Wartość tego atrybutu, zostanie umieszczona tylko w wskazanej wersji językowej. Należy używać locale dla wszystkich atrybutów które mogą podlegać tłumaczeniom
+-	locale dla języka narodowego (`pl-PL`, `en-GB` itp.) - wartość atrybutu jest zapisana dla danego języka narodowego. Wartość tego atrybutu, zostanie umieszczona tylko w wskazanej wersji językowej. Należy używać locale dla wszystkich atrybutów które mogą podlegać tłumaczeniom
 -	'all'- wartość atrybutu zostanie umieszczona we wszystkich wersjach językowych, dla danego obiektu turystycznego.
 
 Podczas przekazywania danych do systemu RIT, wersje językowe są tworzone na bazie przekazywanych atrybutów. Z każdego z atrybutów jest pobierana informacja o wersji językowej i na tej podstawie tworzona jest lista wersji językowych.  Atrybuty nie mają w swojej konfiguracji wytycznych co do wersji językowej w jakiej mogą być używane. Jednak można zastosować pewne reguły:
--	atrybuty posiadające wartości będące nazwami własnymi  ( miasto, miejscowość itp. ) –  powinny być przekazywane dla każdej wersji językowej ( 'all' )
--	atrybuty posiadające wartości będące liczbami, datami lub nie zawierające słów – powinny być przekazywane dla każdej wersji językowej ( 'all' )
--	atrybuty posiadające wartości z słownika – powinny być przekazywane dla konkretnego języka  narodowego  ( 'pl-PL', 'en-GB' itp. ). Uwaga: jeśli słownik posiada nazwy własne, w języku polskim, które nie podlegają tłumaczeniu, to można użyć dla niego każdej wersji językowej ( 'all' ).
--	pozostałe atrybuty powinny być przekazywane dla konkretnego języka  narodowego  ( 'pl-PL', 'en-GB' itp. )
+-	atrybuty posiadające wartości będące nazwami własnymi  ( miasto, miejscowość itp. ) –  powinny być przekazywane dla każdej wersji językowej (`all`)
+-	atrybuty posiadające wartości będące liczbami, datami lub nie zawierające słów – powinny być przekazywane dla każdej wersji językowej (`all`)
+-	atrybuty posiadające wartości z słownika – powinny być przekazywane dla konkretnego języka  narodowego  (`pl-PL`, `en-GB` itp.). Uwaga: jeśli słownik posiada nazwy własne, w języku polskim, które nie podlegają tłumaczeniu, to można użyć dla niego każdej wersji językowej (`all`).
+-	pozostałe atrybuty powinny być przekazywane dla konkretnego języka  narodowego  (`pl-PL`, `en-GB` itp. )
 
 Podczas pobierania danych z systemu RIT, należy podać konkretną wersję językową, w której dane mają być dostarczone. Nie jest dopuszczalne użycie każdej wersji językowej ( 'all' ).
 
@@ -1137,12 +1134,12 @@ Podczas pobierania danych z systemu RIT, należy podać konkretną wersję języ
 Podawanie danych adresowych obiektu możliwe jest na dwa sposoby:
 
 1.	Bezpośrednie podanie czystym tekstem nazwy województwa, powiatu, gminy i miejscowości;
-2.	Tak jak dla wszystkich danych słownikowych: Podawanie numeru ID pozycji słownika województw, powiatów, gmin lub miejscowości (wymaga to znajomości numerów ID).
+2.	Tak jak dla wszystkich danych słownikowych: Podawanie numeru ID pozycji słownika województw, powiatów, gmin lub miejscowości (wymaga to znajomości numerów ID, które są numerami wewnętrznymi - **nie** są to identyfikatory TERYT).
 
 W pierwszym przypadku mogą wystąpić dwie sytuacje powodujące błędy lub uniemożliwiające poprawne przetwarzanie danych:
 
--	Nazwa województwa, powiatu, gminy lub miejscowości będzie błędna (lub jeszcze nieznana, nieobecna w bazie) – wówczas obiekt zostanie przyjęty do bazy RIT i użytkownik o odpowiedniej wiedzy merytorycznej poprawi błąd ręcznie lub odrzuci obiekt
--	Nazwa województwa, powiatu, gminy lub miejscowości będzie niejednoznaczna – system RIT postara się na podstawie wszystkich danych (województwa, powiatu, gminy, miejscowości) określić prawidłową, niejednoznaczną lokalizację obiektu, ewentualnie obiekt zostanie przyjęty lecz skierowany do poprawki przez żywą osobę
+-	Nazwa województwa, powiatu, gminy lub miejscowości będzie błędna (lub jeszcze nieznana, nieobecna w bazie) – wówczas obiekt zostanie przyjęty do bazy RIT i użytkownik o odpowiedniej wiedzy merytorycznej poprawi błąd ręcznie lub odrzuci obiekt;
+-	Nazwa województwa, powiatu, gminy lub miejscowości będzie niejednoznaczna – system RIT postara się na podstawie wszystkich danych (województwa, powiatu, gminy, miejscowości) określić prawidłową, niejednoznaczną lokalizację obiektu, ewentualnie obiekt zostanie przyjęty lecz skierowany do poprawki przez żywą osobę.
 
 System jest niewrażliwy na wielkość liter w przypadku tych atrybutów.
 
