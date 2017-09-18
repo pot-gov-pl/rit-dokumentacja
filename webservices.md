@@ -1,11 +1,11 @@
 # Użytkowanie interfejsów WSDL
 
-Wersja 7.1, Polska Organizacja Turystyczna, Betacom S.A.
+Wersja 7.1 poprawiona, Polska Organizacja Turystyczna, Betacom S.A.
 
 ## Historia zmian
 
 Autor | Data ukończenia |	Opis zmian |	Wersja
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 Robert Stepuch |	2013-03-21 |	Utworzenie dokumentu |	1.0
 Robert Stepuch |	2013-09-20 |	Nowy rozdział: Przykładowy skrypt PHP |	2.0
 Robert Stepuch |	2013-12-10 |	Nowy rozdział: Nowy webservice: CollectTouristObjectsCache |	3.0
