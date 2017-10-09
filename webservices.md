@@ -1,6 +1,6 @@
 # Użytkowanie interfejsów WSDL
 
-Wersja 7.1 poprawiona, Polska Organizacja Turystyczna, Betacom S.A.
+Wersja 7.2 poprawiona, Polska Organizacja Turystyczna, Betacom S.A.
 
 ## Historia zmian
 
@@ -17,6 +17,7 @@ Jacek Guz |	2016-07-26 |	Nowy webservice: GetTouristObjectLanguages |	6.0
 Jacek Guz |	2016-09-13 |	Nowy webservice GetTouristObjectEvents |	7.0
 Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisami w PHP |	7.1
 Grzegorz Kowalski | patrz: [historia commitów](https://github.com/pot-gov-pl/rit-dokumentacja/commits/master/webservices.md) po 2017-08 | Wiele małych poprawek i uściśleń | -
+Jacek Guz | 2017-09-25 | Dodano opis dla atrybutu searchAttributeAnd. |	7.2
 
 ## Spis treści
 
@@ -505,6 +506,9 @@ Element |	Przeznaczenie |	Typ XML |	Krotność
 language	|	Język w którym zostaną udostępnione wartości wszystkich atrybutów, opisujących obiekt turystyczny.	|	string	|	1..1
 allForDistributionChannel	|	Jeśli element zostanie podany z wartością 'true' to:<br>- udostępnione zostaną wszystkie obiekty dostępne dla kanału dystrybucji,<br>- elementy  searchAttributeAnd,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|	boolean	|	0..1
 searchAttributeAnd	|	Element pozwala na podanie wartości dowolnego atrybutu po którym odbywać się ma wyszukiwanie obiektów. Wyszukane zostaną wszystkie obiekty. Które posiadają danych atrybut o określonej wartości. Elementy  allForDistributionChannel,  objectIdentifier,  searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelce: searchAttributeAnd.	|	element	|	0..1
+searchAttributeAnd -> attributeValue	|Atrybut po którym będą szukane obiekty.|	element|	1..*
+searchAttributeAnd -> attributeValue -> attributeCode|	Kod atrybutu np. A009.  Na podstawie tego kodu jest wyznaczany typ atrybutu (tekst, data, liczba, lista). W zależności od wyznaczonego typu, wartości atrybutu są odpowiednio traktowane.|	string	|1..1
+searchAttributeAnd -> attributeValue -> valueToSearch|	Wartość atrybutu. W zależności od typu atrybutu, wartość jest traktowana w następujący sposób.<br><br>Liczba – spodziewamy się, że wartość jest numeryczna i „valueSearch” występuje dwa razy, gdzie pierwsza wartość reprezentuje kryterium „od”, a druga wartość kryterium „do”.<br>Data – spodziewamy się, że wartość jest w formacie yyyy-mm-dd i „valueSearch” występuje dwa razy, gdzie pierwsza wartość reprezentuje kryterium „od”, a druga wartość kryterium „do”.<br>Lista – spodziewamy się wartości numerycznej reprezentującej ID pozycji słownikowej, lub nazwa pozycji słownikowej. Np. dla atrybutu A009 (województwo) można podać wartość „1918” lub „mazowieckie”. „valueSearch” może występować jeden lub więcej razy.<br>Tekst lub inny – spodziewamy się, że „valueSearech” występuje raz.|	string |1..*
 searchCategoryAnd	|	Element pozwala na podanie kodu dowolnej kategorii Systemu RIT. Wyszukane zostaną wszystkie obiekty należące do tych kategorii. Elementy  allForDistributionChannel,  searchAttributeAnd, objectIdentifier,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.	|	element	|	0..1
 objectIdentifier	|	Element pozwala na podanie identyfikatorów RIT lub identyfikatorów z systemu zewnętrznego po których ma być przeszukiwana baza Systemu RIT.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd,  lastModifiedRange nie będą brane pod uwagę w kryteriach wyszukiwania.<br><br>Opis podelementów w tabelkach: touristObjectIdentifierRIT, touristObjectIdentifierSZ.	|	element	|	0..1
 lastModifiedRange	|	Element pozwala na podanie zakresu dat  lub jednego z krańców zakresu dat, odnoszących się do daty ostatniej modyfikacji obiektu turystycznego w Systemie RIT. Zwracane są wszystkie obiekty dostępne dla kanału dystrybucji w podanym zakresie dat.<br><br>Jedna z dat: dateFrom,  dateTo musi być zawsze podana.<br><br>Elementy  allForDistributionChannel,  searchAttributeAnd, searchCategoryAnd, objectIdentifier nie będą brane pod uwagę w kryteriach wyszukiwania.	|	element	|	0..1
