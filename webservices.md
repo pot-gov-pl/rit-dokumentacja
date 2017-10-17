@@ -18,6 +18,7 @@ Jacek Guz |	2016-09-13 |	Nowy webservice GetTouristObjectEvents |	7.0
 Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisami w PHP |	7.1
 Grzegorz Kowalski | patrz: [historia commitów](https://github.com/pot-gov-pl/rit-dokumentacja/commits/master/webservices.md) po 2017-08 | Wiele małych poprawek i uściśleń | -
 Jacek Guz | 2017-09-25 | Dodano opis dla atrybutu searchAttributeAnd. |	7.2
+Jacek Guz |	2017-10-17 | Poprawiony opis dla documentURL. |	7.3
 
 ## Spis treści
 
@@ -361,7 +362,7 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 fileName	|	Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.<br><br>⚠ Obecnie (2017-08) w przypadku przekazania pustej wartości system RIT przepisuje nazwę pliku z pola URL, ale nie należy polegać na tym zachowaniu.	|	GIVE/COLLECT	|	string	|	1..1
-fileType	|	Typ pliku (rozszerzenie pliku lub ContentType dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
+fileType	|	Rozszerzenie pliku (bez kropki np.: `jpg`). Rozszerzenie to jest mapowane na jedną z wartości: `document`, `movie`, `image`. Jeśli nie podane, system próbuje pobrać rozszerzenie z URL.|	GIVE/COLLECT	|	string	|	1..1
 URL	|	Adres URL wskazujący na plik binarny.<br><br>Dla GIVE, jest to dowolny adres internetowy dostępny dla systemu RIT. Adres powinien korzystać z metody 'HTTP', nie być zabezpieczony żadną z metod autentykacji.<br><br>Dla COLLECT, jest to adres internetowy, dla części integracyjnej aplikacji RIT. Pliki udostępnianie pod tym adresem będą dostępne przez 7 dni od daty pobrania obiektu z systemu RIT.	|	GIVE/COLLECT	|	string	|	1..1
 certificate	|	Element opisuje pozwolenie na użytkowanie pliku udzielone przez POT / udostępniającego plik.	|	COLLECT	|	element	|	0..1
 certificate ->validTo	|	Data do  pozwolenia na użytkowanie pliku.	|	COLLECT	|	date	|	1..1
