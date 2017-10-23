@@ -339,7 +339,7 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 documentURL	|	Element do przekazania dokumentu binarnego dostępnego jako adres URL.<br><br>Opis podelementów w tabelce: documentURL.	|	GIVE/COLLECT	|	element	|	0..unbounded
-documentFile	|	Element do przekazania dokumentu binarnego dostępnego jako plik umieszczony na serwerze FTP w POT.<br><br>Opis podelementów w tabelce: *documentFile*.	|	GIVE	|	element	|	0..unbounded
+documentFile	|	Element do przekazania dokumentu binarnego dostępnego jako plik umieszczony na serwerze FTP w POT.<br><br>Opis podelementów w tabelce: *documentFile*.<br><br>⚠ Obecnie (2017-10) element ten **nie jest obsługiwany przez system RIT**.|	GIVE	|	element	|	0..unbounded
 documentBase64	|	Element do przekazania dokumentu binarnego dostępnego jako strumień zakodowany w Base64.<br><br>Opis podelementów w tabelce: *documentBase64*.	|	GIVE	|	element	|	0..unbounded
 
 Element: **documentURL**
@@ -388,7 +388,7 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 fileName | Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br><br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.	|	GIVE/COLLECT	|	string	|	1..1
-fileType	|	Typ pliku (rozszerzenie pliku lub `ContentType` dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
+fileType	|	Rozszerzenie pliku (bez kropki np.: `jpg`). Rozszerzenie to jest mapowane na jedną z wartości: `document`, `movie`, `image`.|	GIVE/COLLECT	|	string	|	1..1
 relativePathToDirectory	|	Relatywna ścieżka do katalogu na serwerze FTP w POT, w którym został umieszczony plik.	| 	GIVE/COLLECT	|	string	|	1..1
 certificate	|	Element opisuje pozwolenie na użytkowanie pliku udzielone przez POT / udostępniającego plik.	|	COLLECT	|	element	|	0..1
 certificate->validTo	|	Data do  pozwolenia na użytkowanie pliku.	|	COLLECT	|	date	|	1..1
@@ -414,7 +414,7 @@ Opis elementów:
 Element |	Przeznaczenie |	Używany |	Typ XML |	Krotność
 ---	| ---	| ---	| ---	| ---
 fileName	|	Przyjazna nazwa tego pliku lub nazwa pliku  z rozszerzeniem. W tym elemencie należy podać tekst który będzie widziany przez użytkownika aplikacji RIT i na jego podstawie, będzie mógł rozróżnić plik spośród innych przypisanych do obiektu turystycznego.<br><br>W przypadku braku takiej nazwy należy podać nazwę pliku z rozszerzeniem.	|	GIVE/COLLECT	|	string	|	1..1
-fileType	|	Typ pliku (rozszerzenie pliku lub ContentType dla pliku)	|	GIVE/COLLECT	|	string	|	1..1
+fileType	|	Rozszerzenie pliku (bez kropki np.: `jpg`). Rozszerzenie to jest mapowane na jedną z wartości: `document`, `movie`, `image`. |	GIVE/COLLECT	|	string	|	1..1
 encoded	|	Plik binarny zakodowany w Base64.	|	GIVE/COLLECT	|	string	|	1..1
 certificate	|	Element opisuje pozwolenie na użytkowanie pliku udzielone przez POT / udostępniającego plik.	|	COLLECT	|	element	|	0..1
 certificate ->validTo	Data	| do  pozwolenia na użytkowanie pliku.	|	COLLECT	|	date	|	1..1
