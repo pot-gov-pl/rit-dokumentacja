@@ -97,6 +97,7 @@ Jeżeli w danej chwili dokładna data wydarzenia niej jest znana, lecz znany jes
 * Należy tłumaczyć nazwy rzek, które są przetłumaczalne, czyli pisać "Vistula, Lusatian Neisse" (ang.) a nie "Wisła, Nysa Łużycka";
 * Nazwy atrakcji podajemy jako nazwę przetłumaczoną i za nią w nawiasie nazwę polską, np. "Maskauer Park (Park Mużakowski), Artus Court (Dwór Artusa)";
 *	Regiony: jeżeli tłumaczenie jest możliwe, należy je wykonać i dodać w nawiasie nazwę polską.
+* Należy poprawnie tłumaczyć polski skrót "nr", czyli np. dla języka angielskiego pisać "no.", dla niemieckiego "Nr.".
 
 ### Wytyczne dla języka angielskiego
 
