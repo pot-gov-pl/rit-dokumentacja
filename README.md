@@ -25,17 +25,17 @@ Dokument | Status
 
 Data | Zdarzenie
 --- | ---
-2011-07-08 | Ogłoszenie przetargu na projekt techniczny (przetarg nr 46/11)
+2011-07-08 | Ogłoszenie przetargu na projekt techniczny
 2011-08-03 | Rozstrzygnięcie przetargu
-2011-10-19 | Ogłoszenie przetargu na wykonanie i wdrożenie systemu (przetarg nr 66/11)
+2011-10-19 | Ogłoszenie przetargu na wykonanie i wdrożenie systemu
 2012-03-02 | Unieważnienie przetargu
-2012-05-19 | Ponowne ogłoszenie przetargu na wykonanie i wdrożenie systemu (przetarg 22/12)
+2012-05-19 | Ponowne ogłoszenie przetargu na wykonanie i wdrożenie systemu
 2012-08-01 | Rozstrzygnięcie przetargu
 2012-09-14 | Data rozpoczęcia budowy
 2013-06-24 | Data wdrożenia
 
 Dokument | Status
 --- | ---
-Ogłoszenia, SIWZ, SOPZ i załączniki do przetargu nr 46/11 "Wykonanie kompleksowego projektu technicznego Systemu Repozytorium Informacji Turystycznej" | Wersję elektroniczną można otrzymać od Departamentu e-Informacji
-Ogłoszenia, SIWZ, SOPZ i załączniki do przetargu publicznego nr 66/11: "Zaprojektowanie, wykonanie i wdrożenie Systemu Repozytorium Informacji Turystycznej" | Wersję elektroniczną można otrzymać od Departamentu e-Informacji
-Ogłoszenia, SIWZ, SOPZ i załączniki do przetargu publicznego nr 22/12: "Opracowanie i wdrożenie systemu RIT" | Wersję elektroniczną można otrzymać od Departamentu e-Informacji
+[Dokumentacja do przetargu nr 46/11: "Wykonanie kompleksowego projektu technicznego Systemu Repozytorium Informacji Turystycznej"](https://www.pot.gov.pl/przetargi/p/przetargi-archiwalne/2011/wykonanie-kompleksowego-projektu-technicznego-systemu-repozytorium-informacji-turystycznej-uwzgldniajcego-integracj-zewntrznych-systemow-z-baz-rit-przy-pomocy-zespou-interfejsow-wymiany-danych-oraz-wsparcie-eksperckie-we-wdroeniu-projektu-4611) | Link zewnętrzny do serwisu Polskiej Organiacji Turystycznej
+[Dokumentacja do przetargu publicznego nr 66/11: "Zaprojektowanie, wykonanie i wdrożenie Systemu Repozytorium Informacji Turystycznej"](https://www.pot.gov.pl/przetargi/p/przetargi-archiwalne/2011/zaprojektowanie-wykonanie-i-wdroenie-systemu-repozytorium-informacji-turystycznej-numer-6611) | Link zewnętrzny do serwisu Polskiej Organiacji Turystycznej
+[Dokumentacja do przetargu publicznego nr 22/12: "Opracowanie i wdrożenie systemu RIT"](https://www.pot.gov.pl/przetargi/i/rozstrzygniete/2012/opracowanie-i-wdroenie-systemu-rit-numer-2212) | Link zewnętrzny do serwisu Polskiej Organiacji Turystycznej
