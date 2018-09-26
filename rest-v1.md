@@ -1,14 +1,17 @@
 # Opis API widget Informator
 
-Wersja 1.2, Polska Organizacja Turystyczna, Betacom S.A.
+Wersja 1.4, Polska Organizacja Turystyczna, Betacom S.A.
 
 ## Historia zmian
 
 Autor | Data ukończenia |	Opis zmian |	Wersja |	Status
 --- | --- | --- | --- | ---
 Jacek Guz |	22.07.2014 |	Utworzenie dokumentu |	1.0 |	Do przeglądu
-Jacek Guz |	14.01.2015 |	Pkt 8. Pobieranie obiektu turystycznego. W zwracanym wyniku przy opisie attachments i images dodano 2 nowe atrybuty: type i fileName. |	1.1	 | |
-Jacek Guz |	21.01.2015 |	Pkt 9. Wyszukanie obiektów i pkt 10. Wyszukanie obiektów w pobliżu trasy. Dodano nowy parametr ascii. |	1.2	 | |
+Jacek Guz |	14.01.2015 |	Pkt 8. Pobieranie obiektu turystycznego. W zwracanym wyniku przy opisie attachments i images dodano 2 nowe atrybuty: type i fileName. |	1.1	 |
+Jacek Guz |	21.01.2015 |	Pkt 9. Wyszukanie obiektów i pkt 10. Wyszukanie obiektów w pobliżu trasy. Dodano nowy parametr ascii. |	1.2	 |
+Jacek Guz	|	27.01.2015 |	Pkt. 11 Pobranie pliku graficznego. Dopisano format wyniku.	|	1.3 |
+Jacek Guz	|	21.08.2018 |  |	1.4 |
+
 
 ## 1.	Wstęp
 Dokument opisuje API dla widgetu w Informatorze.
@@ -35,25 +38,25 @@ url: 'https://rittest.poland.travel/informator-web/api/searchWithLang/pl/1.jsonp
 
 Nazwa	| Opis
 --- | ---
-/api/regions.jsonp	|	Pobiera listę województw.
-/api/cities.jsonp	|	Pobiera listę miejscowości spełniających podane kryteria.
-/api/districts.jsonp	|	Pobiera listę powiatów spełniających podane kryteria.
-/api/communitis.jsonp	|	Pobiera listę gmin spełniających podane kryteria.
-/api/objects/[lang]/[object_id].jsonp	|	Pobiera obiekt turystyczny w wybranej wersji językowej.
-/api/searchWithLang/[lang]/[page_no].jsonp	|	Wyszukanie listy obiektów turystycznych w wybranej wersji językowej spełniających podane kryteria.
-/api/searchclose/[lang]/[page_no].jsonp	|	Wyszukanie listy obiektów turystycznych w wybranej wersji językowej spełniających podane kryteria w pobliżu podanej trasy.
+/api/regions.jsonp<br>/api/regions |	Pobiera listę województw.
+/api/cities.jsonp<br>/api/cities	|	Pobiera listę miejscowości spełniających podane kryteria.
+/api/districts.jsonp<br>/api/districts	|	Pobiera listę powiatów spełniających podane kryteria.
+/api/communitis.jsonp<br>/api/communitis	|	Pobiera listę gmin spełniających podane kryteria.
+/api/categories/[lang].jsonp<br>/api/categories/[lang]	|	Pobiera drzewo kategorii w wybranej wersji językowej.
+/api/objects/[lang]/[object_id].jsonp<br>/api/objects/[lang]/[object_id]	|	Pobiera obiekt turystyczny w wybranej wersji językowej.
+/api/searchWithLang/[lang]/[page_no].jsonp<br>/api/searchWithLang/[lang]/[page_no]	|	Wyszukanie listy obiektów turystycznych w wybranej wersji językowej spełniających podane kryteria.
+/api/searchclose/[lang]/[page_no].jsonp<br>/api/searchclose/[lang]/[page_no]	|	Wyszukanie listy obiektów turystycznych w wybranej wersji językowej spełniających podane kryteria w pobliżu podanej trasy.
 /api/report/searchresult	|	Pobiera raport PDF z wyników wyszukiwania.
 /api/report/object	|	Pobiera raport PDF danego obiektu.
 /api/report/route	|	Pobiera raport PDF z wyznaczania trasy.
 /api/files/[file_id]	|	Pobiera plik graficzny.
 /api/attachments/[attachment_id]	|	Pobiera plik załącznika.
-/api/categories/[lang].jsonp	|	Pobiera drzewo kategorii w wybranej wersji językowej.
 
 ## 3.	Pobranie listy województw
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/regions.jsonp | GET | Pobiera listę województw.
+/api/regions.jsonp<br>/api/regions | GET | Pobiera listę województw.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -77,7 +80,7 @@ name |	Nazwa
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/cities.jsonp | GET | Pobiera listę miejscowości.
+/api/cities.jsonp<br>/api/cities | GET | Pobiera listę miejscowości.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -103,7 +106,7 @@ regionId | 	Id województwa.
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/districts.jsonp | GET | Pobiera listę powiatów.
+/api/districts.jsonp<br>/api/districts | GET | Pobiera listę powiatów.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -127,7 +130,7 @@ name |	Nazwa
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/communitis.jsonp | GET | Pobiera listę gmin.
+/api/communitis.jsonp<br>/api/communitis | GET | Pobiera listę gmin.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -151,7 +154,7 @@ name |	Nazwa
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/categories/*[lang]*.jsonp | GET | Pobiera drzewo kategorii w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
+/api/categories/[lang].jsonp<br>/api/categories/[lang] | GET | Pobiera drzewo kategorii w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -232,7 +235,7 @@ Przykład szczególnego przypadku `attributes` dla atrybutu typu COMPLEX:
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/objects/*[lang]*/*[object_id]*.jsonp | GET | Pobiera obiekt turystyczny w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
+/api/objects/[lang]/[object_id].jsonp<br>/api/objects/[lang]/[object_id] | GET | Pobiera obiekt turystyczny w wybranej wersji językowej. W przypadku gdy nie ma danych w wybranej wersji języka, zwracana jest wersja polska.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -288,7 +291,7 @@ endDate |	Data ważności do
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/searchWithLang/*[lang]*/*[page_no]*.jsonp | GET | Wyszukuje obiekty turystyczne spełniające zadane parametry. Metoda wspiera stronicowanie.<br><br>Rozmiar strony stały i ma wartość 8.
+/api/searchWithLang/[lang]/[page_no].jsonp<br>/api/searchWithLang/[lang]/[page_no] | GET | Wyszukuje obiekty turystyczne spełniające zadane parametry. Metoda wspiera stronicowanie.<br><br>Rozmiar strony stały i ma wartość 8.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
@@ -343,7 +346,7 @@ pageInfo|	Informacja techniczna o stronicowaniu wyników wyszukiwania.<br><br>Fo
 
 Wywołanie | Metoda | Opis
 --- | --- | ---
-/api/searchclose/*[lang]*/*[page_no]*.jsonp | GET | Wyszukuje obiekty turystyczne spełniające zadane parametry w pobliżu trasy. Metoda wspiera stronicowanie.<br><br>Rozmiar strony stały i ma wartość 8.
+/api/searchclose/[lang]/[page_no].jsonp<br>/api/searchclose/[lang]/[page_no] | GET | Wyszukuje obiekty turystyczne spełniające zadane parametry w pobliżu trasy. Metoda wspiera stronicowanie.<br><br>Rozmiar strony stały i ma wartość 8.
 
 Parametr wejściowy | Wymagany | Opis
 --- | --- | ---
