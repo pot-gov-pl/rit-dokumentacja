@@ -2,9 +2,9 @@
 
 ## Opieka nad dokumentem
 W razie pytań, uwag i sugestii prosimy o kontakt z pierwszą osobą z poniższej listy. W przypadku braku odpowiedzi należy wypróbować kontakty z kolejnych jej pozycji:
-* Grzegorz Kowalski, Departament e-Informacji POT, grzegorz.kowalski@pot.gov.pl,
-* Krzysztof Niedziałek, Departament e-Informacji POT, krzysztof.niedzialek@pot.gov.pl
-* Departament Komunikacji Internetowej, POT, http://pot.gov.pl/, dki@pot.gov.pl.
+* Grzegorz Kowalski, Departament Komunikacji Internetowej POT, grzegorz.kowalski@pot.gov.pl,
+* Krzysztof Niedziałek, Departament Komunikacji Internetowej POT, krzysztof.niedzialek@pot.gov.pl
+* Departament Komunikacji Internetowej, POT, https://pot.gov.pl/, dki@pot.gov.pl.
 
 ## Dla Zamawiającego: proponowany wkład do dokumentacji przetargowej
 ### Wprowadzenie
@@ -77,12 +77,8 @@ Stosowane są komunikaty SOAP serializowane do postaci XML.
 
 Interfejsy zostały wykonane w technologii JAX-WS (implementacja Apache CXF w wersji 2.5.1), styl kodowania treści komunikatów to „document/literal” a strona kodowa treści to „UTF-8”.
 
-### Bezpieczeństwo informacji
-System RIT przetwarza dane osobowe zwykłe w postaci danych o przedsiębiorstwach agroturystycznych działających jako jednoosobowa działalność gospodarcza. Żadne inne dane osobowe zwykłe nie są przetwarzane w systemie RIT.
-
-System RIT nie przetwarza danych osobowych wrażliwych ani informacji niejawnych.
-
-System RIT nie jest rejestrem publicznym w rozumieniu art. 3 Ustawy z dnia 17 lutego 2005 r. o informatyzacji działalności podmiotów realizujących zadania publiczne.
+### Dane osobowe
+System RIT przetwarza dane osobowe w postaci danych ojednoosobowych działalnościach gospodarczych w miejscu zamieszkania mających w nazwie imię i nazwisko właściciela (np. obiekty agroturystyczne). Polska Organizacja Turystyczna jak i Regionalne Organizacje Turystyczne podstawę do przetwrzania tego typu danych mogą znaleźć w Ustawie z dnia 25 czerwca 1999 r. o Polskiej Organizacji Turystycznej a inne podmioty muszą dokonać rozeznania ich własnej sytuacji prawnej (np. być może muszą pozyskiać stosowne zgody, spełnieć obowiązek informacyjny itp.).
 
 ### Koncepcja organizacji danych
 Wszystkie obiekty zgromadzone w bazach danych systemu RIT i udostępniane na zewnątrz za pomocą interfejsów Webservice zorganizowane są według koncepcji hierarchicznej, drzewiastej struktury w której dziedziczone są kolejne atrybuty. Struktura jest drzewem, którego liście są właściwymi typami obiektów, a wszystkie węzły od korzenia służą pośredniej kategoryzacji oraz dziedziczeniu.
