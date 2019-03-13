@@ -2,9 +2,9 @@
 
 ## Opieka nad dokumentem
 W razie pytań, uwag i sugestii prosimy o kontakt z pierwszą osobą z poniższej listy. W przypadku braku odpowiedzi należy wypróbować kontakty z kolejnych jej pozycji:
-* Grzegorz Kowalski, Departament e-Informacji POT, grzegorz.kowalski@pot.gov.pl,
-* Krzysztof Niedziałek, Departament e-Informacji POT, krzysztof.niedzialek@pot.gov.pl
-* Departament Komunikacji Internetowej, POT, http://pot.gov.pl/, dki@pot.gov.pl.
+* Grzegorz Kowalski, Departament Komunikacji Internetowej POT, grzegorz.kowalski@pot.gov.pl,
+* Krzysztof Niedziałek, Departament Komunikacji Internetowej POT, krzysztof.niedzialek@pot.gov.pl
+* Departament Komunikacji Internetowej, POT, https://pot.gov.pl/, dki@pot.gov.pl.
 
 ## Dla Zamawiającego: proponowany wkład do dokumentacji przetargowej
 ### Wprowadzenie
