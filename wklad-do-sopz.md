@@ -78,11 +78,7 @@ Stosowane są komunikaty SOAP serializowane do postaci XML.
 Interfejsy zostały wykonane w technologii JAX-WS (implementacja Apache CXF w wersji 2.5.1), styl kodowania treści komunikatów to „document/literal” a strona kodowa treści to „UTF-8”.
 
 ### Bezpieczeństwo informacji
-System RIT przetwarza dane osobowe zwykłe w postaci danych o przedsiębiorstwach agroturystycznych działających jako jednoosobowa działalność gospodarcza. Żadne inne dane osobowe zwykłe nie są przetwarzane w systemie RIT.
-
-System RIT nie przetwarza danych osobowych wrażliwych ani informacji niejawnych.
-
-System RIT nie jest rejestrem publicznym w rozumieniu art. 3 Ustawy z dnia 17 lutego 2005 r. o informatyzacji działalności podmiotów realizujących zadania publiczne.
+System RIT przetwarza dane osobowe w postaci danych o jednoosobowych działalnościach gospodarczych świadczących usługi turystyczne. Podstawą dla Polskiej Organizacji Turystycznej do przetwarzania tych danych jest art. 3 ust. 1 Ustawy z dnia 25 czerwca 1999 r. o Polskiej Organizacji Turystycznej. Podstawą dla Regionalnych Organizacji Turystycznych, będących głównymi partnerami POT w wymianie danych pomiędzy RIT a ich systemami, podstawą do przetwarzania tych danych jest art 4. ust. 3 Ustawy z dnia 25 czerwca 1999 r. o Polskiej Organizacji Turystycznej. Pozostałe podmioty, które wymieniają dane z RIT, muszą dokonać stosownej oceny co do podstawy prawnej przetwarzania danych i podjąć stosowne decyzje i działania.
 
 ### Koncepcja organizacji danych
 Wszystkie obiekty zgromadzone w bazach danych systemu RIT i udostępniane na zewnątrz za pomocą interfejsów Webservice zorganizowane są według koncepcji hierarchicznej, drzewiastej struktury w której dziedziczone są kolejne atrybuty. Struktura jest drzewem, którego liście są właściwymi typami obiektów, a wszystkie węzły od korzenia służą pośredniej kategoryzacji oraz dziedziczeniu.
