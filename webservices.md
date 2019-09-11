@@ -240,18 +240,18 @@ Przykład:
 <attributes>
    <attribute code="">
       <attrVals language="">
-         <value><value>
-      <attrVals>
+         <value></value>
+      </attrVals>
       <complex>
          <compAttrVals code="">
            <attrVals language="">
-              <value><value>
+              <value></value>
             <attrVals>
-         <compAttrVals>
+         </compAttrVals>
       <complex>
-      <parentCategoryCode><parentCategoryCode>
-   <attribute>
-<attributes>
+      <parentCategoryCode></parentCategoryCode>
+   </attribute>
+</attributes>
 ```
 
 Opis elementów:
@@ -269,8 +269,8 @@ Element: **attrVals**
 Przykład:
 ```xml
  <attrVals language="pl-PL">
-     <value>Tekst<value>
- <attrVals>
+     <value>Tekst</value>
+ </attrVals>
  ```
 
 Opis elementów:
@@ -287,9 +287,9 @@ Przykład:
 ```xml
 <compAttrVals code="">
     <attrVals language="">
-      <value><value>
-    <attrVals>
-<compAttrVals>
+      <value></value>
+    </attrVals>
+</compAttrVals>
 ```
 
 Opis elementów:
@@ -305,33 +305,33 @@ Przykład:
 ```xml
 <binaryDocuments>
    <documentURL>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <URL><URL>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <URL></URL>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
    <documentURL>
    <documentFile>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <relativePathToDirectory>out_files<relativePathToDirectory>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <relativePathToDirectory>out_files</relativePathToDirectory>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
-   <documentFile>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
+  </documentFile>
    <documentBase64>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <encoded><encoded>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <encoded></encoded>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
-   <documentBase64>
-<binaryDocuments>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
+ </documentBase64>
+</binaryDocuments>
 ```
 
 Opis elementów:
@@ -347,13 +347,13 @@ Element: **documentURL**
 Przykład:
 ```xml
    <documentURL>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <URL><URL>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <URL></URL>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
    <documentURL>
 ```
 
@@ -373,13 +373,13 @@ Element: **documentFile**
 Przykład:
 ```xml
   <documentFile>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <relativePathToDirectory><relativePathToDirectory>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <relativePathToDirectory></relativePathToDirectory>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
    <documentFile>
 ```
 
@@ -399,14 +399,14 @@ Element: **documentBase64**
 Przykład:
 ```xml
  <documentBase64>
-	  <fileName><fileName>
-	  <fileType><fileType>
-	  <encoded><encoded>
+	  <fileName></fileName>
+	  <fileType></fileType>
+	  <encoded></encoded>
 	  <certificate>
-		 <validTo><validTo>
-		 <distributionChannelOwner><distributionChannelOwner>
-	  <certificate>
-   <documentBase64>
+		 <validTo></validTo>
+		 <distributionChannelOwner></distributionChannelOwner>
+   </certificate>
+ </documentBase64>
 ```
 
 Opis elementów:
@@ -429,23 +429,23 @@ Przykład:
 <report>
 	<reportForObject>
 	   <identifierRIT>
-		  <identifierRIT><identifierRIT>
-		  <lastModified>2014-09-19<lastModified>
-	   <identifierRIT>
+		  <identifierRIT></identifierRIT>
+		  <lastModified>2014-09-19</lastModified>
+    </identifierRIT>
 	   <identifierSZ>
-		  <identifierType><identifierType>
-		  <artificialIdentifier><artificialIdentifier>
-		  <databaseTable><databaseTable>
-		  <concatenationOfField><concatenationOfField>
-	   <identifierSZ>
+		  <identifierType></identifierType>
+		  <artificialIdentifier></artificialIdentifier>
+		  <databaseTable></databaseTable>
+		  <concatenationOfField></concatenationOfField>
+    </identifierSZ>
           <positionInXML></positionInXML>
-	   <objectState><objectState>
+	   <objectState></objectState>
 	   <reportLine>
-		  <lineType><lineType>
-		  <textLine><textLine>
-	   <reportLine>
-	<reportForObject>
-<report>
+		  <lineType></lineType>
+		  <textLine></textLine>
+    </reportLine>
+	</reportForObject>
+</report>
 ```
 
 Opis elementów:
@@ -525,8 +525,8 @@ Element `CollectTouristObjectResponse` w odpowiedzi (response) ma następującą
          <info></info>
          <touristObject>
          …....
-         <touristObject>
-   <CollectTouristObjectResponse>
+       </touristObject>
+   </CollectTouristObjectResponse>
 ```
 
 Opis elementów:
@@ -578,8 +578,8 @@ Element `CollectTouristObjectCacheResponse` w odpowiedzi ( response ) ma następ
          <info></info>
          <touristObject>
          …....
-         <touristObject>
-   <CollectTouristObjectResponse>
+       </touristObject>
+   </CollectTouristObjectResponse>
 ```
 
 Opis elementów:
@@ -820,7 +820,7 @@ Element `MetadataRequest` w żądaniu ( request ):
          <language></language>
          <metric>
           …......
-         <metric>
+        </metric>
  </MetadataRequest>
  ```
 
