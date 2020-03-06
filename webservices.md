@@ -19,6 +19,7 @@ Grzegorz Kowalski |	2017-01-19 |	Usunięcie przykładów łączenia z webserwisa
 Grzegorz Kowalski | patrz: [historia commitów](https://github.com/pot-gov-pl/rit-dokumentacja/commits/master/webservices.md) po 2017-08 | Wiele małych poprawek i uściśleń | -
 Jacek Guz | 2017-09-25 | Dodano opis dla atrybutu searchAttributeAnd. |	7.2
 Jacek Guz |	2017-10-17 | Poprawiony opis dla documentURL. |	7.3
+Grzegorz Kowalski | 2020-03-06 | Zmiana adresów interfejsów i wybranych informacji o nich | 8
 
 ## Spis treści
 
@@ -82,33 +83,20 @@ Implementacja interfejsów została wykonana z wykorzystaniem standardu **JAX-WS
 
 Implementacja JAX-WS to **Apache CXF w wersji 2.5.1**.
 
-Serwer web, udostępniający RIT webservices, to: **Apache HTTP Server 2.2.23**.
-
 Styl kodowania treści komunikatu w RIT webservices to: **document/literal**.
 
 Strona kodowa treści komunikatu w RIT webservices to: **UTF-8**.
 
-Metoda autentykacji do RIT webservices to: **client certificate** (obsługa autentykacji po stronie serwera Apache).
-
 Webservices są dostępne pod adresami ( odpowiednio ):
--	https://intrit.poland.travel/rit/integration/GiveTouristObjects?wsdl
--	https://intrit.poland.travel/rit/integration/MetadataOfRIT?wsdl
--	https://intrit.poland.travel/rit/integration/CollectTouristObjects?wsdl
--	https://intrit.poland.travel/rit/integration/CollectTouristObjectsCache?wsdl
--	https://intrit.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl
--	https://intrit.poland.travel/rit/integration/GetTouristObjectEvents?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/GiveTouristObjects?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/MetadataOfRIT?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/CollectTouristObjects?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/CollectTouristObjectsCache?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/GetTouristObjectLanguages?wsdl
+-	https://maps.pot.gov.pl/rit-soap-server/GetTouristObjectEvents?wsdl
 
 Serwis do udostępniania plików binarnych:
--	https://intrit.poland.travel/rit/integration/getfile?fileid=????
-
-Środowisko testowe RIT jest dostępne pod adresami:
--	https://intrittest.poland.travel/rit/integration/GiveTouristObjects?wsdl
--	https://intrittest.poland.travel/rit/integration/MetadataOfRIT?wsdl
--	https://intrittest.poland.travel/rit/integration/CollectTouristObjects?wsdl
--	https://intrittest.poland.travel/rit/integration/CollectTouristObjectsCache?wsdl
--	https://intrittest.poland.travel/rit/integration/GetTouristObjectLanguages?wsdl
--	https://intrittest.poland.travel/rit/integration/GetTouristObjectEvents?wsdl
--	https://intrittest.poland.travel/rit/integration/getfile?fileid=????
+-	https://maps.pot.gov.pl/rit-soap-server/getfile?fileid=????
 
 ## 3.	Wspólne elementy
 
