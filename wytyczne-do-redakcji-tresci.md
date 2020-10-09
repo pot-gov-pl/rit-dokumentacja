@@ -21,12 +21,14 @@ Zmiany w treści dokumentu można proponować także poprzez *pull request* wobe
 ####	Edycja opisu tekstowego obiektu
 
 #####	Opis krótki
-Zaleca się, aby opis krótki zawierał się w około 500 znakach i około 1-2 zdaniach. Jest używany najcześciej na listach wyników wyszukiwania.
+Zaleca się, aby opis krótki zawierał się w około 500 znakach i około 1-2 zdaniach. Jest używany na listach wyników wyszukiwania.
 
 #####	Opis długi
-Wymaga się, aby opis długi nie zawierał w sobie dokładnej treści opisu krótkiego. Może natomiast zawierać te same informacje w innej formie.
+Wymaga się, aby opis długi nie zawierał w sobie treści opisu krótkiego. Nie należy powielać udogodnień obiektu, które są zawarte w innych częściach formularza.
 
-Opis długi nie zawiera ograniczenia długości, ale należy pamiętac, ze im dłuższy opis, tym więcej trudu trzeba włożyc w przygotowanie jego wielojezycznych tlumaczen, okresową weryfikacje poprawności i inne działania. Zaleca się zachowac zdrowy rozsądek.
+Opis długi nie zawiera ograniczenia długości, ale należy pamiętaż, że im dłuższy opis, tym więcej trudu trzeba włożyć w przygotowanie jego wielojęzycznych tłumaczeń, okresową weryfikacje poprawności i inne działania. Zaleca się zachować zdrowy rozsądek.
+
+Wymaga się, aby opisy tworzone były w 3 osobie liczby pojedynczej, czyli: Obiekt położony wśród malowniczej scenerii… Zabronione jest tworzenie opisów w 1 osobie, np.: zapraszamy, oferujemy…
 
 #####	Oryginalność opisów
 Opisy muszą być wytworzone bezpośrednio przez redaktorów lub pochodzić ze źródła, które udzieliło do nich stosownych praw licencyjnych.
@@ -35,6 +37,17 @@ Opisy muszą być wytworzone bezpośrednio przez redaktorów lub pochodzić ze �
 Mając przygotowany uprzednio tekst i przeklejając go do edytora opisu obiektu należy dopilnować, aby wklejony został tzw. zwykły tekst, czyli tekst pozbawiony dodatkowych ukrytych informacji (np. dotyczących wyglądu tekstu). Takie ukryte informacje mogą niekorzystnie wpływać na przetwarzanie i wyświetlanie danych.
 
 W szczególności problem ukrytych informacji występuje przy kopiowaniu z dokumentów programu *Microsoft Word*. Wówczas należy najpierw przekopiować je do edytora tekstu nie obsługującego ukrytych informacji (np. do *Notatnika*) i z tego edytora ponownie te informacje skopiować, aby wkleić w opis obiektu.
+
+#### Inne
+
+W nazwie ulicy nie powtarzamy jej typu, np.: ul.; al.; itp. Pole to wybierane jest z listy: typ adresu.
+
+#### Format zapisywania danych
+
+*	Kod pocztowy, data otwarcia, data zamknięcia: XX-XXX
+*	Telefon: +XX XXXXXXXXX
+*	Ceny: XX.XX PLN – XX.XX PLN
+
 
 #### Edycja zdjęć obiektu
 
