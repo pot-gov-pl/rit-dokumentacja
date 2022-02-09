@@ -9,8 +9,8 @@ Docelowymi odbiorcami tego dokumentu są wszelkie osoby redagujące i porządkuj
 ## Opieka nad dokumentem
 
 W razie pytań, uwag i sugestii prosimy o kontakt z pierwszą osobą z poniższej listy. W przypadku braku odpowiedzi należy wypróbować kontakty z kolejnych jej pozycji:
-*	Grzegorz Kowalski, Departament Komunikacji Internetowej POT, [grzegorz.kowalski@pot.gov.pl](mailto:grzegorz.kowalski@pot.gov.pl),
-*	Departament Maerketingu, POT, https://pot.gov.pl/, [dm@pot.gov.pl](dm@pot.gov.pl).
+*	Grzegorz Kowalski, Departament Marketingu, POT, [grzegorz.kowalski@pot.gov.pl](mailto:grzegorz.kowalski@pot.gov.pl),
+*	Departament Marketingu, POT, https://pot.gov.pl/, [dm@pot.gov.pl](dm@pot.gov.pl).
 
 Zmiany w treści dokumentu można proponować także poprzez *pull request* wobec repozytorium git zawierającym ten dokument.
 
