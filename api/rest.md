@@ -1,11 +1,13 @@
 # Dokumentacja interfesjów REST
 
-## Adresy bazowe interfejsów
+## Endpointy
+
+### Adresy bazowe interfejsów
 
 Środowisko produkcyjne:
 * https://rit.poland.travel/api
 
-## Pobieranie danych o podziale terytorialnym
+### Pobieranie danych o podziale terytorialnym
 
 `/provinces` - zwraca listę województw
 
@@ -79,10 +81,10 @@
 ]
 ```
 
-## Pobieranie danych obiektów
+### Pobieranie danych obiektów
 
-`v1/objects` - zwraca obiekty według filtrów zadanych w query stringu
-`v1/objects/{id}` - zwraca obiekt o zadanym ID
+`/v1/objects` - zwraca obiekty według filtrów zadanych w query stringu
+`/v1/objects/{id}` - zwraca obiekt o zadanym ID
 
 Dostępne filtry atrybutów:
 * like
@@ -118,7 +120,7 @@ Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga u
 "A001": "A001_EN_EN",
 ```
 
-## Pobieranie metadanych
+### Pobieranie metadanych
 
 `/v1/metadata/languages` - zwraca obsługiwane wersje językowe
 
@@ -284,3 +286,36 @@ Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga u
   },
 ]
 ```
+
+## Struktura danych
+
+### JSON wynikowy /v1/objects
+
+* metric
+  * requested_at - data wykonania żadania, do celów debugowania
+* attributes
+  * id - ID obiektu turystycznego w bazie RIT (tzw RIT ID)
+  * state - stan publikacji obiektu (1 = opublikowany, inne wartości - nie do publikacji)
+  * AXXX - wartość atrybutu AXXX (np. A001)
+  * AXXX_YY_ZZ - wartość atrybutu AXXX w tłumaczeniu na język YY_ZZ (np. A001_EN_EN - tytuł po angielsku)
+  * created_at - data utworzenia obiektu
+  * updated_at - data aktualizacji obiektu
+  * duplicate_id - ID obiektu, którego ten jest duplikatem
+* categories - tablica codów kategorii, np. C001, C002, do których należy obiekt
+* images - tablica obrazów
+  * id - ID obrazu
+  * src - URL do obrazu
+  * width
+  * height
+  * author
+  * title
+  * copyright
+  * descrfiption
+  * latitude
+  * longitude
+  * mime_type - np. "image/jpeg"
+  * created_at
+  * updated_at
+* languages - wersje językowe obiektu (inne niż polska)
+  * YY_ZZ - np. EN_EN, DE_DE
+    * AXXX - nazwa atrybutu z tłumaczeniem dla AXXX (np. A001: A001_EN_EN)
