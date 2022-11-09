@@ -4,22 +4,22 @@
 
 Dokument | Status
 --- | ---
-[Wytyczne do redakcji treści baz danych artykułów i obiektów turystycznych](wytyczne-do-redakcji-tresci.md) | Aktualny i kompletny dokument dostępny online
+[Wytyczne do redakcji treści baz danych artykułów i obiektów turystycznych](wytyczne-do-redakcji-tresci.md) | Aktualny
 
 ## Dokumentacja interfejsów systemu
 
 Dokument | Status
 --- | ---
-[Opis API widget Informator](rest-v1.md) | Wszystkie rozdziały online poza spisem treści
-[Opis API Informator v2](rest-v2.md) | Wszystkie rozdziały online poza spisem treści
-[Użytkowanie interfejsów WSDL](webservices.md) | Wszystkie rozdziały online
+[Opis API widget Informator](rest-v1.md) | **Wycofany z użytku**
+[Opis API Informator v2](rest-v2.md) | **Wycofany z użytku**
+[Użytkowanie interfejsów WSDL](webservices.md) | **Wycofany z użytku**
 
 ## Tworzenie i dostosowywanie systemów zewnętrznych
 
 Dokument | Status
 --- | ---
-[Instalacja i zewnętrzne ostylowanie portletu RIT](https://github.com/gakowalski/rit-portlet/blob/master/setup.md) | Dokument w zewnętrznym repozytorium
-[Integracja z RIT – uzupełnienie dokumentacji przetargowej systemów zewnętrznych](wklad-do-sopz.md) | Wszystko jest poza spisem treści, metryką i historią wersji
+[Instalacja i zewnętrzne ostylowanie portletu RIT](https://github.com/gakowalski/rit-portlet/blob/master/setup.md) | **Wycofany z użytku**
+[Integracja z RIT – uzupełnienie dokumentacji przetargowej systemów zewnętrznych](wklad-do-sopz.md) | **Wycofany z użytku**
 
 ## Historia systemu
 
