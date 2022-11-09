@@ -291,6 +291,7 @@ Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga u
 
 ### JSON wynikowy /v1/objects
 
+ROOT
 * metric
   * requested_at - data wykonania żadania, do celów debugowania
 * attributes
@@ -314,8 +315,52 @@ Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga u
   * latitude
   * longitude
   * mime_type - np. "image/jpeg"
-  * created_at
-  * updated_at
+  * created_at - data utworzenia obrazu
+  * updated_at - data aktualizacji informacji o obrazie
 * languages - wersje językowe obiektu (inne niż polska)
   * YY_ZZ - np. EN_EN, DE_DE
     * AXXX - nazwa atrybutu z tłumaczeniem dla AXXX (np. A001: A001_EN_EN)
+
+### JSON wynikowy /v1/attributes
+
+ROOT - zawiera **tablicę** atrybutów, każdy opisany tak:
+* id - kod atrybutu, np. A001
+* name - nazwa (polska)
+* description - opis / etykieta
+* is_multilanguage - gdy pozycje słownika posiadają tłumaczenia na inne języki
+* type - typ atrybutu, jeden z: SHORT_TEXT, LONG_TEXT, NUMBER, BOOLEAN, DATE, COMPLEX, MULTIPLY_LIST, SINGLE_LIST (patrz: [stara dokumentacja](https://github.com/pot-gov-pl/rit-dokumentacja/blob/master/webservices.md#ad-2-atrybuty) )
+* parent - atrybut nadrzędny 
+* subattributes - tablica kodów atrybutów podrzędnych (niepuste tylko dla atrybutu typu COMPLEX)
+* validation - regexp do walidowania poprawności wartości atrybutu
+* dictionary - kod słownika np. D001 dla atrybutów typu SINGLE_LIST, MULTIPLY_LIST
+* translations 
+  * AXXX - kod atrybutu
+    * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
+
+
+### JSON wynikowy /v1/categories
+
+ROOT - zawiera **tablicę** kategorii, każda opisana tak:
+* id - kod kategorii, np. C001
+* name - nazwa (polska)
+* parent - atrybut nadrzędny 
+* subcategories - tablica kodów atrybutów podrzędnych (niepuste tylko dla atrybutu typu COMPLEX)
+* attributes - tablica kodów atrybutów używanych przez obiekty tej kategorii
+* translations 
+  * AXXX - kod atrybutu
+    * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
+
+### JSON wynikowy /v1/dictionaries
+
+ROOT - zawiera **tablicę** obiektów opisujących słowniki, każdy obiek opisany tak:
+* id - kod słownika, np. D001
+* name - nazwa (polska)
+* is_multilanguage - gdy pozycje słownika posiadają tłumaczenia na inne języki
+* items - tablica pozycji słownika
+  * id - id pozycji
+  * order - waga pozwalająca na posortowanie pozycji w słowniku
+* translations
+  * # - numer ID pozycji
+    * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
+  * DXXX - tłumaczenia dla nazwy słownika
+    * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
