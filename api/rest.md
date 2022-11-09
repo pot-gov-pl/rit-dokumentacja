@@ -81,6 +81,43 @@
 
 ## Pobieranie danych obiektów
 
+`v1/objects` - zwraca obiekty według filtrów zadanych w query stringu
+`v1/objects/{id}` - zwraca obiekt o zadanym ID
+
+Dostępne filtry atrybutów:
+* like
+* not_equal
+* greater_than
+* greater_equal
+* lesser_than
+* lesser_equal
+
+Inne filtry:
+* categories - filtruj według kategorii, np. `categories[]=C004&categories[]=C006`
+
+Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga użycia filtru "like" na atrybucie "A001" odpowiadającym tytułowi (nazwie) obiektu:
+
+```
+# curl --silent --show-error --globoff https://rit.poland.travel/api/v1/objects?like[A001]=Gwiazda
+
+[{"id":403281},{"id":412073},{"id":434258},{"id":438780},{"id":439218},{"id":440864},{"id":441529},{"id":441792},{"id":442745},{"id":458507},{"id":466356},{"id":466737}]
+
+# curl --silent --show-error --globoff https://rit.poland.travel/api/v1/objects/403281 | jq | grep A001
+
+"A001": "Apartament Pod Gwiazdami",
+"A001_CS_CZ": null,
+"A001_DE_DE": null,
+"A001_EN_EN": "Pod Gwiazdami (Under the Stars) Apartment",
+"A001_ES_ES": null,
+"A001_FR_FR": null,
+"A001_HE_IL": null,
+"A001_HU_HU": null,
+"A001_IT_IT": null,
+"A001_RU_RU": null,
+"A001_UK_UA": null,
+"A001": "A001_EN_EN",
+```
+
 ## Pobieranie metadanych
 
 `/v1/metadata/languages` - zwraca obsługiwane wersje językowe
