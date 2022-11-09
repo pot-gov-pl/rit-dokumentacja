@@ -287,7 +287,7 @@ Przykład: wyszukanie wszystkich obiektów z tekstem "Gwiazda" w nazwie wymaga u
 ]
 ```
 
-## Struktura danych
+## Struktura zwracanych danych
 
 ### JSON wynikowy /v1/objects
 
@@ -360,7 +360,7 @@ ROOT - zawiera **tablicę** obiektów opisujących słowniki, każdy obiek opisa
   * id - id pozycji
   * order - waga pozwalająca na posortowanie pozycji w słowniku
 * translations
-  * # - numer ID pozycji
+  * X - numer ID pozycji
     * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
   * DXXX - tłumaczenia dla nazwy słownika
     * XX-YY - tłumaczenie dla języka XX-YY, np. "en-GB"
